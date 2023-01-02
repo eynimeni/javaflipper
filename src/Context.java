@@ -33,9 +33,12 @@ public class Context {
             this.credit --;
         }
     }
-
     public void displayCredit() {
         System.out.println("Your Credit: "+ this.credit);
+    }
+
+    public Integer getCredit() {
+        return this.credit;
     }
 }
 

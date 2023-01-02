@@ -1,6 +1,5 @@
 import java.util.Objects;
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -10,7 +9,7 @@ public class Main {
 
        while (playing) {
            System.out.println("*******");
-           System.out.println("Please choose your options! \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Game");
+           System.out.println("Please choose your option! \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Game");
            Scanner scanner = new Scanner(System.in);
            String input = scanner.next();
 
