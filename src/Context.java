@@ -5,6 +5,7 @@ public class Context {
     }
     private State state;
     public void insertCoin() {
+        addCredit();
         state.insertCoin();
     }
 

@@ -15,22 +15,16 @@ public class Main {
            String input = scanner.next();
 
            switch (input) {
-               case ("1"):
-                   context.pressPlayButton();
-                   break;
-               case ("2"):
-                   context.insertCoin();
-                   //im state methode implementieren
-                   break;
-               case ("3"):
-                   context.displayCredit();
-                   break;
-               case ("4"):
+               case ("1") -> context.pressPlayButton();
+               case ("2") -> context.insertCoin();
+               case ("3") -> context.displayCredit();
+               case ("4") -> {
                    System.out.println("We hope you enjoyed your game!");
                    playing = false;
                    //evt. neuer Scanner zum Weiterspielen
-                   break;
-       }
+               }
+
+           }
 
         }
 
