@@ -1,7 +1,7 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
 
         System.out.println("Welcome to our Flipper!");
@@ -19,9 +19,12 @@ public class Main {
                case ("2") -> context.insertCoin();
                case ("3") -> context.displayCredit();
                case ("4") -> {
-                   System.out.println("We hope you enjoyed your game!");
-                   playing = false;
-                   //evt. neuer Scanner zum Weiterspielen
+                   System.out.println("Are you sure you want to quit? Y/N");
+                   Scanner scanner1 = new Scanner(System.in);
+                    if (Objects.equals(scanner1.next(), "Y")) {
+                        System.out.println("We hope you enjoyed your game!");
+                        playing = false;
+                    }
                }
 
            }
