@@ -9,9 +9,7 @@ public class Playing implements State{
         System.out.println("Authors of the Software are Tom and Magdalena");
         //aus Info irgendwo auslesen?
     }
-
     @Override
     public void insertCoin() {
-        context.addCredit();
     }
 }

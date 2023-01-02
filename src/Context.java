@@ -1,16 +1,15 @@
 public class Context {
-    private State state;
-    private Integer credit;
+    private Integer credit = 0;
     public Context(){
         setState(new NoCredit(this));
     }
-
-
+    private State state;
     public void insertCoin() {
         state.insertCoin();
     }
 
     public void pressPlayButton() {
+        System.out.println("Play Button Pressed");
         state.playButtonPressed();
     }
 
@@ -24,13 +23,18 @@ public class Context {
 
     public void addCredit() {
         this.credit ++;
-        System.out.println("Ihr Kredit beträgt nun: "+this.credit);
+        System.out.println("Clink-plink-clink. This coin dropped smoothly!");
+        System.out.println("Your Credit is now: "+this.credit);
+        state.insertCoin();
     }
-
     public void decreaseCredit() {
         if (this.credit > 0) {
             this.credit --;
         }
+    }
+
+    public void displayCredit() {
+        System.out.println("Your Credit: "+ this.credit);
     }
 }
 
