@@ -9,6 +9,7 @@ public class Context {
         state.insertCoin();
     }
 
+
     public void pressPlayButton() {
         System.out.println("Play Button Pressed");
         state.playButtonPressed();
@@ -40,5 +41,6 @@ public class Context {
     public Integer getCredit() {
         return this.credit;
     }
+
 }
 

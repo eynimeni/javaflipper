@@ -22,7 +22,20 @@ public class EndState implements State {
     @Override
     public void playButtonPressed() {
         System.out.println("Endstate play");
+
+              /*
+                this.context.displayCredit();
+        if (this.context.getCredit() == 0) {
+            System.out.println("No more credit");
+            context.setState(new NoCredit(context));
+        } else if (this.context.getCredit() > 0) {
+            System.out.println("Some credit left");
+            context.setState(new Ready(context));
+        }
+         */
+
     }
+
 
     @Override
     public void insertCoin() {

@@ -4,11 +4,14 @@ public class Ready implements State{
         System.out.println("You are now ready to play");
         this.context = context;
     }
+
+
     @Override
     public void playButtonPressed() {
         System.out.println("Ready, steady ....");
         context.decreaseCredit();
         context.setState(new Playing(context));
+        //context.setState(new EndState(context));
     }
     @Override
     public void insertCoin() {
