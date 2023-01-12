@@ -1,3 +1,5 @@
+package States;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -6,7 +8,7 @@ public class Playing implements State{
     private Integer ballCount = 1;
     public Playing(Context context) {
         this.context = context;
-        System.out.println("Playing!");
+        System.out.println("States.Playing!");
 
         shootBall();
 
@@ -48,7 +50,7 @@ public class Playing implements State{
 
     @Override
     public void playButtonPressed() {
-        System.out.println("Playing State - Authors of the Software are Tom and Magdalena");
+        System.out.println("States.Playing States.State - Authors of the Software are Tom and Magdalena");
         changeState();
     }
     @Override

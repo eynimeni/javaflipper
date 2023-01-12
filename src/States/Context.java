@@ -1,3 +1,5 @@
+package States;
+
 public class Context {
     private Integer credit = 0;
     public Context(){
@@ -8,7 +10,6 @@ public class Context {
         addCredit();
         state.insertCoin();
     }
-
 
     public void pressPlayButton() {
         System.out.println("Play Button Pressed");

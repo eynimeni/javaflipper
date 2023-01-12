@@ -1,3 +1,5 @@
+package States;
+
 public class Ready implements State{
     private Context context;
     public Ready(Context context) {
@@ -8,10 +10,10 @@ public class Ready implements State{
 
     @Override
     public void playButtonPressed() {
-        System.out.println("Ready, steady ....");
+        System.out.println("States.Ready, steady ....");
         context.decreaseCredit();
         context.setState(new Playing(context));
-        //context.setState(new EndState(context));
+        //context.setState(new States.EndState(context));
     }
     @Override
     public void insertCoin() {
