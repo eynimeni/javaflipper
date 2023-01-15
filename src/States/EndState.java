@@ -1,7 +1,18 @@
 package States;
 
+/*
+@ToDo: Arbeitskommentare:
+    Finde aus der Angabe geht nicht klar hervor, was hier passiert. Daher mein Vorschlag:
+    - Wenn man die 3. Kugel eines Spiels verliert, gelangt man in den EndState.
+    - Dann wird der Spielscore angezeigt. Diesen sollten wir dann zum Spieler auch sichern.
+    - Mit einer "Eingabe (Enter?)" gelangt man danach entweder in den Ready State, wenn noch Credit vorhanden ist oder in den NoCredit State.
+    - Spiel beenden, obwohl man Credit hat, gibt es ja eig. bei einem Flipper nicht. Man bekommt ja sein Geld nicht zurück. Macht es vllt. auch für unser Übungsbeispiel einfacher?
+ */
+
+
 public class EndState implements State {
     private Context context;
+
     public EndState(Context context) {
         this.context = context;
         System.out.println("Welcome to States.EndState");
