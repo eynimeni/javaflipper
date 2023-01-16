@@ -1,13 +1,12 @@
 package States;
 
 public class Ready implements State {
-    private Context context;
+    private Flipper context;
 
-    public Ready(Context context) {
+    public Ready(Flipper context) {
         System.out.println("You are now ready to play");
         this.context = context;
     }
-
 
     @Override
     public void playButtonPressed() {
@@ -21,5 +20,6 @@ public class Ready implements State {
     public void insertCoin() {
 
         //@ToDo: Credit-Implementierung aufnehmen?
+        // -> das passiert im Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
     }
 }

@@ -1,4 +1,4 @@
-import States.Context;
+import States.Flipper;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Welcome to our Flipper!");
-        Context context = new Context();
+        Flipper context = new Flipper();
         boolean playing = true;
 
         while (playing) {
@@ -22,6 +22,8 @@ public class Main {
                 case ("3") -> context.displayCredit();
                 case ("4") -> {
                     System.out.println("Are you sure you want to quit? Y/N");
+                    if(context.getCredit() > 0 ){
+                        System.out.println("Your Credit of "+context.getCredit() +" will be lost."); }
                     Scanner scanner1 = new Scanner(System.in);
                     if (Objects.equals(scanner1.next(), "Y")) {
                         System.out.println("We hope you enjoyed your game!");

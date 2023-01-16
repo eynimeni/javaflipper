@@ -11,9 +11,9 @@ package States;
 
 
 public class EndState implements State {
-    private Context context;
+    private Flipper context;
 
-    public EndState(Context context) {
+    public EndState(Flipper context) {
         this.context = context;
         System.out.println("Welcome to States.EndState");
     }
