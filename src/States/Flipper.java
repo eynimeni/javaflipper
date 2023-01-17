@@ -180,7 +180,7 @@ public class Flipper {
     }
 
 
-    //Getter Methode um Liste zu übergeben
+    //Getter Methode um Liste zu übergeben an Playing State
     public List<FlipperElement> getFlipperElementsList() {
        return this.flipperElements;
     }

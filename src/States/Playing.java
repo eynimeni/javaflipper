@@ -23,6 +23,7 @@ import FlipperElements.FlipperElement;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Playing implements State {
@@ -96,10 +97,19 @@ public class Playing implements State {
     public void playBall() {
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
 
-        for (var e: flipperElementList
+       //zufälliges Element aus der Liste wird getroffen
+        getRandomFlipperElement(flipperElementList).elementGotHit();
+
+        /* hier würde jedes Element der Reihe nach getroffen werden
+                for (var e: flipperElementList
              ) {
             e.elementGotHit();
         }
+         */
+    }
+
+    public FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
+        return elements.get(new Random().nextInt(elements.size()));
     }
 
 }
