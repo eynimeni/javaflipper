@@ -19,6 +19,9 @@ package States;
  */
 
 import FlipperElements.FlipperElement;
+import FlipperElements.FlipperElementWithScore;
+import Visitor.ResetVisitor;
+import Visitor.ScoreVisitor;
 
 import java.util.*;
 
@@ -27,6 +30,7 @@ public class Playing implements State {
     //@ToDo: Definition 1 Credit = 3 Kugeln
     // das vielleicht irgendwo ausgeben?
     private Integer ballCount = 1;
+    private int gameScore = 0;
 
     public Playing(Flipper context) {
         this.context = context;
@@ -36,10 +40,6 @@ public class Playing implements State {
         //Das Spiel gehört ja immer zu einem Spieler und der Spieler ist im Flipper (context) geführt. Man kann also über den Spieler zum Game Punkte speichern. Aber schauen wir mal, ob das nicht der Visitor erledigt :-)
 
         shootBall();
-
-        //todo hier punkte highscore zeug
-
-        //todo check: endstate
 
         //changeState() greift noch nicht richtig.
         //change state kann nicht im constructor kommen, sonst funktioniert es nicht (warum??)
@@ -64,13 +64,27 @@ public class Playing implements State {
                 this.ballCount++;
                 this.playBall();
 
-                //todo hier wird dann der visitor auch aufgerufen und speichert die punkte
+                //ScoreVisitor ausführen
+                this.calculatePlayScore();
+                System.out.println("Actual Game Score is: >>> " + this.gameScore + " <<<");
 
                 this.shootBall();
             }
         } else {
             System.out.println("Those were all your balls");
             System.out.println("What is your next choice?");
+
+            //todo hier punkte highscore zeug -> done
+            //@ToDo: in End-State auslagern?
+            //Wenn 1 Spiel zu Ende ist, alle 3 Bälle gespielt worden sind, wird Gamescore zum Spieler gespeichert.
+            context.getCurrentPlayer().getGame().setTotalScore(gameScore);
+            System.out.println("Final Game Score is >>> " + this.gameScore + " <<< (Last Game's Score: " + context.getCurrentPlayer().getGame().getLastGamesScore() + "/ Player's Total Score: " +context.getCurrentPlayer().getGame().getTotalScore());
+            context.getCurrentPlayer().getGame().setLastGamesScore(gameScore);
+
+            //todo check: endstate - hier müssten wir dann in den EndState wechseln, oder?
+
+            //ResetVisitor ausführen @ToDo: auch in den EndState auslagern
+            this.resetFlipperElements();
         }
 
     }
@@ -91,7 +105,7 @@ public class Playing implements State {
     @Override
     public void insertCoin() {
 
-        //@ToDo: warum ändert sich hier der Status? Münzeinwurf verschafft ja nur mehr Credit. Play-State -> End-State nur wenn 3. Ball verloren gegangen ist, oder?
+        //@ToDo: warum ändert sich hier der Status? Münzeinwurf verschafft ja nur mehr Credit. Play-State -> EndState nur wenn 3. Ball verloren gegangen ist, oder?
         context.setState(new Ready(context));
         //changeState();
 
@@ -99,9 +113,10 @@ public class Playing implements State {
         // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
     }
 
-    public void playBall() {
+    private void playBall() {
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
 
+        //Random FlipperElement gets hit
         getRandomFlipperElement(flipperElementList).elementGotHit();
 
         System.out.println("Pinball lever trying to catch that ball!");
@@ -116,8 +131,46 @@ public class Playing implements State {
             }
         }
 
-    public FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
+    private FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
         return elements.get(new Random().nextInt(elements.size()));
+    }
+
+    //Läuft nach jedem Ballverlust und nutzt den ScoreVisitor
+    private void calculatePlayScore(){
+
+        ScoreVisitor visitor = new ScoreVisitor();
+        List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
+
+        for (FlipperElement flipperElement : flipperElementList){
+            if(flipperElement instanceof FlipperElementWithScore){
+                gameScore += ((FlipperElementWithScore) flipperElement).acceptVisitor(visitor);
+            }
+        }
+    }
+
+    //Läuft am Ende eines Spiels = nach dem 3. Ball. //@ToDo: gehört wohl in den EndState
+    private void resetFlipperElements(){
+
+        int chkSum = 0;
+        ResetVisitor visitor = new ResetVisitor();
+        List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
+
+        for (FlipperElement flipperElement : flipperElementList) {
+            if (flipperElement instanceof FlipperElementWithScore) {
+
+                chkSum += ((FlipperElementWithScore) flipperElement).acceptVisitor(visitor);
+            }
+        }
+
+        System.out.println("Checksum from Reset ist: " +chkSum);
+        //@ToDo: mit FLipperElementsComposition ist chkSum nach Reset ?? Anpassung dann notwendig!
+        if (chkSum == 21){
+            System.out.println("All FlipperElements successfully reseted!");
+        }
+        else {
+            System.out.println("Something went wrong while resetting!");
+        }
+
     }
 
 }

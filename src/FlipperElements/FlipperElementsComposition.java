@@ -1,6 +1,7 @@
 package FlipperElements;
 
 import Mediator.Mediator;
+import Visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 //Upon receiving a request, a container delegates the work to its sub-elements, processes intermediate results and then returns the final result to the client.
     //@ToDo: -> ich glaube daher, dass der Aufruf der Composition-Methoden zum Aufruf der Methoden der jeweiligen Elemente in der ArrayList führen muss.
 
+//@ToDo: muss wohl auch noch das Interface FlipperElementsWithScroe implementieren!
 public class FlipperElementsComposition implements FlipperElement{
 
     private String id;
@@ -49,7 +51,6 @@ public class FlipperElementsComposition implements FlipperElement{
 
     }
 
-
     //FlipperElement zu kombiniertem FlipperElement hinzufügen
     public void add(FlipperElement flipperElement){
         this.flipperElementsList.add(flipperElement);
@@ -64,4 +65,8 @@ public class FlipperElementsComposition implements FlipperElement{
         return this.flipperElementsList;
     }
 
+    //@ToDo: Wenn Interface implementiert ist, dann diese Methode auch zu implementieren/aktivieren für Visitor!
+    /*public void acceptVisitor(Visitor visitor) {
+        visitor.visitFlipperElementsComposition(this);
+    }*/
 }

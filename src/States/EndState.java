@@ -17,7 +17,8 @@ public class EndState implements State {
         this.context = context;
         System.out.println("Welcome to States.EndState");
     }
-    // score abfragen ob gewonnen ist
+
+    //@ToDo: Nach Spielende Score anzeigen zum Spieler
 
 
     /*
