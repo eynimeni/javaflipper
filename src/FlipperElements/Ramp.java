@@ -1,23 +1,21 @@
 package FlipperElements;
 
+import Mediator.Mediator;
+
 public class Ramp extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
 
     private String id;
     private Integer elementScore = 0;
-    //@ToDo: Delete Comment, when Mediator-Class is available; private Mediator mediator = null;
+    private Mediator mediator;
     private Integer elementHitCount = 0;
     private Boolean elementStatus = true;
 
-    /*@ToDo: Delete Comment, when Mediator-Class is available;
-    public Ramp(Mediator mediator){
-        this.mediator = mediator;
-    }
-    */
 
-    //@ToDo: wenn Mediator vorhanden löschen!
-    public Ramp(String id){
+    public Ramp(String id, Mediator mediator){
+
         this.id = id;
+        this.mediator = mediator;
     }
 
     public String getId() {

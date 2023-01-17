@@ -1,11 +1,14 @@
 package FlipperElements;
 
+import Mediator.Mediator;
+
 //@Kickers und Holes sind dasselbe.
 public class KickersHoles extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;
-    //@ToDo: Delete Comment, when Mediator-Class is available; private Mediator mediator = null;
+
+    private Mediator mediator;
     private Integer elementHitCount = 0;
     private Boolean elementStatus = true;
 
@@ -16,8 +19,10 @@ public class KickersHoles extends FlipperComponent implements FlipperElement, Fl
     */
 
     //@ToDo: wenn Mediator vorhanden löschen!
-    public KickersHoles(String id){
+    public KickersHoles(String id, Mediator mediator){
+
         this.id = id;
+        this.mediator = mediator;
     }
 
     public String getId() {

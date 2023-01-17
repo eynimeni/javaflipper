@@ -11,6 +11,8 @@ package States;/*
     Dann Spiellogik via Playing Klasse und Kompositum, Mediator etc?
  */
 
+//TODO aufpassen, dass diese Klasse nicht zu überladen wird - evt. etwas kapseln in neuer Klasse
+
 import FlipperElements.*;
 import Mediator.Mediator;
 import Mediator.MediatorImpl;
@@ -41,7 +43,6 @@ public class Flipper {
         //FlipperStatus beim Instanzieren setzen
         setState(new NoCredit(this));
 
-        //@ToDo: hier auch den Mediator erzeugen, und diesen dann an createFlipperElements() als Parameter mit geben, damit dieser für die Erstellung der einzelnen FlipperElements genutzt werden kann.
         //FlipperElemente für FLipper erzeugen
         this.flipperElements = createFlipperElements();
 
@@ -108,36 +109,31 @@ public class Flipper {
         //@ToDo: man könnte hier mit einer Random-Funktion die Anzahl der zu erstellenden FlipperElemente jeweils noch freier gestalten
 
         for(int i = 0; i<2; i++){
-            //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-            Bumper bumper = new Bumper("bumper"+i);
+            Bumper bumper = new Bumper("bumper"+i, this.mediator);
             tmpFlipperElements.add(bumper);
         }
         System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<3; i++){
-            //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
             Target target = new Target("target"+i, this.mediator);
             tmpFlipperElements.add(target);
         }
         System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<2; i++){
-            //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-            KickersHoles kickersHoles = new KickersHoles("kicker"+i);
+            KickersHoles kickersHoles = new KickersHoles("kicker"+i, this.mediator);
             tmpFlipperElements.add(kickersHoles);
         }
         System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<1; i++){
-            //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-            Ramp ramp = new Ramp("ramp"+i);
+            Ramp ramp = new Ramp("ramp"+i, this.mediator);
             tmpFlipperElements.add(ramp);
         }
         System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<2; i++){
-            //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-            Slingshot slingshot = new Slingshot("slingshot"+i);
+            Slingshot slingshot = new Slingshot("slingshot"+i, this.mediator);
             tmpFlipperElements.add(slingshot);
         }
         System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
@@ -169,17 +165,14 @@ public class Flipper {
 
         FlipperElementsComposition flipperElementsComposition = new FlipperElementsComposition("composition1");
 
-        //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-        Bumper bumper = new Bumper("compBumper");
+        Bumper bumper = new Bumper("compBumper", this.mediator);
         flipperElementsComposition.add(bumper);
 
-        //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
         Target target = new Target("compTarget", this.mediator);
         flipperElementsComposition.add(target);
 
         for(int i = 0; i<2; i++){
-            //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-            Slingshot slingshot = new Slingshot("compSlingshot"+i);
+            Slingshot slingshot = new Slingshot("compSlingshot"+i, this.mediator);
             flipperElementsComposition.add(slingshot);
         }
 
@@ -187,7 +180,7 @@ public class Flipper {
     }
 
 
-    //neue Getter Methode um Liste zu übergeben
+    //Getter Methode um Liste zu übergeben
     public List<FlipperElement> getFlipperElementsList() {
        return this.flipperElements;
     }

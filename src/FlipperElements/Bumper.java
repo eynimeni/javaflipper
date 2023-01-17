@@ -1,10 +1,13 @@
 package FlipperElements;
 
+import Mediator.Mediator;
+
 public class Bumper extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;
-    //@ToDo: Delete Comment, when Mediator-Class is available; private Mediator mediator = null;
+
+    private Mediator mediator;
     private Integer elementHitCount = 0;
     private Boolean elementStatus = true;
 
@@ -16,8 +19,10 @@ public class Bumper extends FlipperComponent implements FlipperElement, FlipperE
     */
 
     //@ToDo: wenn Mediator vorhanden löschen!
-    public Bumper(String id){
+    public Bumper(String id, Mediator mediator){
+
         this.id = id;
+        this.mediator = mediator;
     }
 
     public String getId() {

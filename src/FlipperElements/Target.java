@@ -10,13 +10,6 @@ public class Target extends FlipperComponent implements FlipperElement, FlipperE
     private Integer elementHitCount = 0;
     private Boolean elementStatus = true;
 
-    /*@ToDo: Delete Comment, when Mediator-Class is available;
-    public Target(Mediator mediator){
-        this.mediator = mediator;
-    }
-    */
-
-    //@ToDo: wenn Mediator vorhanden löschen!
     public Target(String id, Mediator mediator){
         this.id = id;
         this.mediator = mediator;

@@ -18,8 +18,7 @@ public class MediatorImpl implements Mediator {
 
 
 
-    public void reactOnBumper() {
-
+    public void reactOnSlingshot() {
 
 
     };
