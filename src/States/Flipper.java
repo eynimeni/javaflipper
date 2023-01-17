@@ -13,6 +13,7 @@ package States;/*
 
 //TODO aufpassen, dass diese Klasse nicht zu überladen wird - evt. etwas kapseln in neuer Klasse
 
+import Base.Player;
 import FlipperElements.*;
 import Mediator.Mediator;
 import Mediator.MediatorImpl;
@@ -32,11 +33,11 @@ public class Flipper {
     //States.Flipper hält in der Liste die FlipperElemente
     private List<FlipperElement> flipperElements;
     Mediator mediator = new MediatorImpl();
+    //Liste, um Player zu speichern.
+    private List<Player> players = new ArrayList<>();
+    //Aktueller Spieler, muss bei Spielerwechsel geändert werden. Diese Funktion gibt es aber noch nicht @ToDo: implementieren?
+    private Player currentPlayer;
 
-
-    /*@ToDo: Vorschlag für weitere Attribute der Flipperklasse.
-    public players: Player[] //Array der Spieler, die schon gespielt haben. Auch Eingabe eines neuen Spielers soll möglich sein. Total-Score = 0, Last-Game-Score = 0 zu beginn.
-    */
 
     private Flipper() {
 
@@ -190,5 +191,25 @@ public class Flipper {
        return this.flipperElements;
     }
 
+
+    public void addPlayer(String playerName){
+
+        Player tmpPlayer = createPlayer(playerName);
+        System.out.println("Log: Player " +tmpPlayer.getPlayerName()+ ", Total Score = " +tmpPlayer.getGame().getTotalScore()+ "/last Game's Score = " +tmpPlayer.getGame().getLastGamesScore());
+
+        this.players.add(tmpPlayer);
+        this.currentPlayer = tmpPlayer;
+    }
+
+    private Player createPlayer(String playerName){
+
+        Player player = new Player(playerName);
+        return player;
+
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 }
 

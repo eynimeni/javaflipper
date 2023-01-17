@@ -32,7 +32,9 @@ public class Playing implements State {
         this.context = context;
         System.out.println("States.Playing!");
 
-        //hier vielleicht eine Game Class die Punkte speichert (und mit Spiel verbunden ist)
+        //hier vielleicht eine Base.Game Class die Punkte speichert (und mit Spiel verbunden ist)
+        //Das Spiel gehört ja immer zu einem Spieler und der Spieler ist im Flipper (context) geführt. Man kann also über den Spieler zum Game Punkte speichern. Aber schauen wir mal, ob das nicht der Visitor erledigt :-)
+
         shootBall();
 
         //todo hier punkte highscore zeug
