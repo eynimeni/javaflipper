@@ -12,7 +12,6 @@ public class FlipperElementsComposition extends FlipperComponent implements Flip
     private Boolean elementStatus = true;
     private List<FlipperElement> flipperElementsList = new ArrayList<>();
 
-    //@ToDo: wenn Mediator vorhanden löschen!
     public FlipperElementsComposition(String id){
         this.id = id;
     }

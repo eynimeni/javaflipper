@@ -97,7 +97,6 @@ public class Playing implements State {
     public void playBall() {
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
 
-
         //hier wird zufällig generiert, wieviele elemente bei dieser runde getroffen werden
         Integer max = new Random().nextInt(15);
 

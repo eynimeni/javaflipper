@@ -10,17 +10,9 @@ public class Bumper extends FlipperComponent implements FlipperElement, FlipperE
     private Mediator mediator;
     private Integer elementHitCount = 0;
     private Boolean elementStatus = true;
+    private Boolean specialBonusPoints = false;
 
-    /*@ToDo: Delete Comment, when Mediator-Class is available;
-    public Bumper(Mediator mediator, String id){
-        this.mediator = mediator;
-        this.id = id;
-    }
-    */
-
-    //@ToDo: wenn Mediator vorhanden löschen!
     public Bumper(String id, Mediator mediator){
-
         this.id = id;
         this.mediator = mediator;
     }
@@ -60,11 +52,23 @@ public class Bumper extends FlipperComponent implements FlipperElement, FlipperE
 
     @Override
     public void elementGotHit() {
-        this.mediator.directBall(this);
+        if(elementStatus) {
+            this.elementHitCount += 1;
+            this.mediator.directBall(this);
+        }
+
     }
 
     @Override
     public void notifyMediator(FlipperElement flipperElement) {
+    }
+
+    public void turnOnSpecialBonusPoints() {
+        if (specialBonusPoints = false) {
+            this.specialBonusPoints = true;
+            System.out.println("WOW - You will get Special Bonus Points for your Bumper Hitting Qualities!");
+        }
 
     }
+
 }

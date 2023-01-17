@@ -60,7 +60,10 @@ public class KickersHoles extends FlipperComponent implements FlipperElement, Fl
 
     @Override
     public void elementGotHit() {
-        this.mediator.directBall(this);
+        if(elementStatus) {
+            this.elementHitCount += 1;
+            this.mediator.directBall(this);
+        }
     }
 
     @Override

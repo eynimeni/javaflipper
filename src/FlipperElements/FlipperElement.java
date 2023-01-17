@@ -11,6 +11,8 @@ public interface FlipperElement {
 
     //@ToDo: kann sein, dass wir den Status gar nicht brauchen?
     //ALle Elemente haben einen Status: true = kann angespielt werden, false = kann nicht angespielt werden
+    //todo überlegen, evt. haben nicht alle einen status
+
     void setElementStatus(Boolean elementStatus);
 
     //Status eines Elements abfragen, um Möglichkeit des Anspielens zu ermitteln

@@ -9,7 +9,7 @@ public class Ramp extends FlipperComponent implements FlipperElement, FlipperEle
     private Integer elementScore = 0;
     private Mediator mediator;
     private Integer elementHitCount = 0;
-    private Boolean elementStatus = true;
+    private Boolean elementStatus = false;
 
 
     public Ramp(String id, Mediator mediator){
@@ -53,7 +53,12 @@ public class Ramp extends FlipperComponent implements FlipperElement, FlipperEle
 
     @Override
     public void elementGotHit() {
-        this.mediator.directBall(this);
+
+        //default ist jetzt mal false
+        if(elementStatus) {
+            this.elementHitCount += 1;
+            this.mediator.directBall(this);
+        }
 
     }
 
