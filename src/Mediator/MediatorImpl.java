@@ -5,8 +5,17 @@ import FlipperElements.*;
 //todo: nachdem ich hier nur auf die einzelnen, bereits konkret gebauten elemente zugreife (und nicht weiß, welches das nächste sein wird) ->
 //Frage: wie kann ich in einem anderen Element etwas verändern?
 
+/*
+Consider storing references to all components inside the mediator. This way, you could call any component from the mediator’s methods.
+
+You can go even further and make the mediator responsible for the creation and destruction of component objects. After this, the mediator may resemble a factory or a facade.
+
+
+ */
+
 
 public class MediatorImpl implements Mediator {
+
 
     @Override
     public void directBall(FlipperElement flipperElement) {
