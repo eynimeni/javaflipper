@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Welcome to our Flipper!");
-        Flipper context = new Flipper();
+        Flipper context = Flipper.getSingleFlipperInstance();
         boolean playing = true;
 
         while (playing) {

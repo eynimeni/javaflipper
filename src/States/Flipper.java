@@ -5,11 +5,6 @@ package States;
     Hab mich ja an diesen Inputs orientiert https://refactoring.guru/design-patterns/state. Ich denke, dass die Context-Klasse schon unsere Flipperklasse ist.
     Wg. diesem Statement: "Instead of implementing all behaviors on its own, the original object, called context, stores a reference to one of the state objects that represents its current state, and delegates all the state-related work to that object."
     Schlage daher vor, dass wir:
-    - Die Context-Klasse zur Flipperklasse refactorn
-        //->done! Nice :-)
-    - Sie als Singleton aus der Main erzeugen, weil es nur 1 Flipperautomaten ja an sich gibt.
-        //->ja, das passiert schon!
-        //Leider "NEIN", denn beim Singleton darf der Konstruktor nicht direkt aufgerufen werden. Es gibt eine Methode, die das Erzeugen übernimmt und eben nur ein Objekt erzeugt, wenn es noch keines gibt! Hab es unten auskommentiert eingebaut
     - Flipper-Klasse kommt dann auch aus dem Statespackage wieder raus. Steht mal auf selber Ebene wie die Main.
         //->hier gibt es vielleicht ein Problem mit der Vererbung des Interfaces (zumindest schreit die IDE), drum hab ich es mal gelassen.
         // Ok, sehen wir uns noch an.
@@ -26,6 +21,8 @@ public class Flipper {
 
     private static Flipper singletonFlipper;
     //@ToDo: Ist der Credit nicht auch vom Status abhängig? NoCredit -> Credit = 0, Ready/Playing/EndState -> Credit >= 1 und gehört als Attribut inkl. dazugehöriger Methoden in den State? Oder als globale Variable zum Flipper?
+    //-> dafür brauchen wir keine Variable, diese Logik ist im Endstate. Nach dem Spiel wird geschaut ob noch Credit da ist, dann entweder -> No Credit oder Ready State.
+
     private Integer credit = 0;
     private State state;
     //Flipper hält in der Liste die FlipperElemente
@@ -35,8 +32,7 @@ public class Flipper {
     public players: Player[] //Array der Spieler, die schon gespielt haben. Auch Eingabe eines neuen Spielers soll möglich sein. Total-Score = 0, Last-Game-Score = 0 zu beginn.
     */
 
-    //@ToDo: Constructor für Singleton private machen. Wird dann über public Methode aufgerufen.
-    public Flipper() {
+    private Flipper() {
 
         //FlipperStatus beim Instanzieren setzen
         setState(new NoCredit(this));
@@ -46,7 +42,6 @@ public class Flipper {
         this.flipperElements = createFlipperElements();
     }
 
-    //@ToDo: aus Main zum Erzeugen des Flippers aufrufen, der dadurch zum Singleton wird
     public static Flipper getSingleFlipperInstance(){
         if (singletonFlipper == null){
             singletonFlipper = new Flipper();
