@@ -40,4 +40,9 @@ public class Slingshot extends FlipperComponent implements FlipperElement {
     public void elementGotHit() {
 
     }
+
+    @Override
+    public void notifyMediator(FlipperElement flipperElement) {
+
+    }
 }

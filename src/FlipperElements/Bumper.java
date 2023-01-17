@@ -57,4 +57,9 @@ public class Bumper extends FlipperComponent implements FlipperElement, FlipperE
     public void elementGotHit() {
 
     }
+
+    @Override
+    public void notifyMediator(FlipperElement flipperElement) {
+
+    }
 }

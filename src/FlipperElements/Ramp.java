@@ -57,4 +57,9 @@ public class Ramp extends FlipperComponent implements FlipperElement, FlipperEle
     public void elementGotHit() {
 
     }
+
+    @Override
+    public void notifyMediator(FlipperElement flipperElement) {
+
+    }
 }

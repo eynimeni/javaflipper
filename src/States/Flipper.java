@@ -13,6 +13,8 @@ package States;/*
 
 import FlipperElements.*;
 import Mediator.Mediator;
+import Mediator.MediatorImpl;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class Flipper {
     private State state;
     //States.Flipper hält in der Liste die FlipperElemente
     private List<FlipperElement> flipperElements;
+    Mediator mediator = new MediatorImpl();
 
 
     /*@ToDo: Vorschlag für weitere Attribute der Flipperklasse.
@@ -41,6 +44,8 @@ public class Flipper {
         //@ToDo: hier auch den Mediator erzeugen, und diesen dann an createFlipperElements() als Parameter mit geben, damit dieser für die Erstellung der einzelnen FlipperElements genutzt werden kann.
         //FlipperElemente für FLipper erzeugen
         this.flipperElements = createFlipperElements();
+
+
     }
 
     public static Flipper getSingleFlipperInstance(){
@@ -92,6 +97,7 @@ public class Flipper {
         return this.credit;
     }
 
+
     //Methode zum Erzeugen der FLipperElemente, die aus dem Constructor aufgerufen wird
     private List<FlipperElement> createFlipperElements(){
 
@@ -110,7 +116,7 @@ public class Flipper {
 
         for(int i = 0; i<3; i++){
             //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-            Target target = new Target("target"+i);
+            Target target = new Target("target"+i, this.mediator);
             tmpFlipperElements.add(target);
         }
         System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
@@ -168,7 +174,7 @@ public class Flipper {
         flipperElementsComposition.add(bumper);
 
         //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-        Target target = new Target("compTarget", );
+        Target target = new Target("compTarget", this.mediator);
         flipperElementsComposition.add(target);
 
         for(int i = 0; i<2; i++){
@@ -178,6 +184,12 @@ public class Flipper {
         }
 
         return flipperElementsComposition;
+    }
+
+
+    //neue Getter Methode um Liste zu übergeben
+    public List<FlipperElement> getFlipperElementsList() {
+       return this.flipperElements;
     }
 
 }

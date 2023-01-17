@@ -57,4 +57,9 @@ public class KickersHoles extends FlipperComponent implements FlipperElement, Fl
     public void elementGotHit() {
 
     }
+
+    @Override
+    public void notifyMediator(FlipperElement flipperElement) {
+
+    }
 }

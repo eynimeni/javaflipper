@@ -9,7 +9,6 @@ public class MediatorImpl implements Mediator {
         System.out.println(flipperElement.getId() + " got hit");
 
 
-
         //beispiel:
         /*
         element wird angespielt

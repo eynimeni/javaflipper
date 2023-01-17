@@ -18,8 +18,8 @@ public class Target extends FlipperComponent implements FlipperElement, FlipperE
 
     //@ToDo: wenn Mediator vorhanden löschen!
     public Target(String id, Mediator mediator){
-
         this.id = id;
+        this.mediator = mediator;
     }
 
     public String getId() {
@@ -57,6 +57,7 @@ public class Target extends FlipperComponent implements FlipperElement, FlipperE
 
     @Override
     public void elementGotHit() {
+        this.mediator.directBall(this);
 
     }
 

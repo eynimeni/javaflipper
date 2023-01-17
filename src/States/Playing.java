@@ -19,6 +19,9 @@ package States;
 
  */
 
+import FlipperElements.FlipperElement;
+
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -56,6 +59,7 @@ public class Playing implements State {
             if (Objects.equals(shooting, "Y")) {
                 System.out.println("Ball Number: " + this.ballCount + "/3");
                 this.ballCount++;
+                this.playBall();
                 this.shootBall();
             }
         } else {
@@ -88,4 +92,14 @@ public class Playing implements State {
         //@ToDo: Credit-Implementierung aufnehmen?
         // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
     }
+
+    public void playBall() {
+        List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
+
+        for (var e: flipperElementList
+             ) {
+            e.elementGotHit();
+        }
+    }
+
 }

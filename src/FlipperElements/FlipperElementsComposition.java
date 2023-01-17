@@ -43,6 +43,11 @@ public class FlipperElementsComposition extends FlipperComponent implements Flip
 
     }
 
+    @Override
+    public void notifyMediator(FlipperElement flipperElement) {
+
+    }
+
     //FlipperElement zu kombiniertem FlipperElement hinzufügen
     public void add(FlipperElement flipperElement){
         this.flipperElementsList.add(flipperElement);
