@@ -6,15 +6,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Welcome to our States.Flipper!");
+        System.out.println("\n>>Welcome to our States.Flipper!<<");
+        //@ToDo: final context zu flipper refactorn ;-)
         Flipper context = Flipper.getSingleFlipperInstance();
         boolean playing = true;
+        String input;
+
+        System.out.print("Please choose your Playername: ");
+        input = inputScanner();
+        context.addPlayer(input);
 
         while (playing) {
-            System.out.println("*******");
-            System.out.println("Please choose your option! \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Game");
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.next();
+            System.out.println("\n*******");
+            System.out.println("Please \"" + context.getCurrentPlayer().getPlayerName() + "\" choose your option! \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Base.Game");
+
+            input = inputScanner();
 
             switch (input) {
                 case ("1") -> context.pressPlayButton();
@@ -37,4 +43,13 @@ public class Main {
 
 
     }
+    //main() Ende
+
+    private static String inputScanner(){
+
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
+
+    }
+
 }

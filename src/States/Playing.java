@@ -32,7 +32,7 @@ public class Playing implements State {
         this.context = context;
         System.out.println("States.Playing!");
 
-        //hier vielleicht eine Game Class die Punkte speichert (und mit Spiel verbunden ist)
+        //hier vielleicht eine Base.Game Class die Punkte speichert (und mit Spiel verbunden ist)
 
         shootBall();
 
