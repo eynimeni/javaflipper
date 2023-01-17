@@ -49,10 +49,6 @@ public class FlipperElementsComposition implements FlipperElement{
 
     }
 
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
 
     //FlipperElement zu kombiniertem FlipperElement hinzufügen
     public void add(FlipperElement flipperElement){

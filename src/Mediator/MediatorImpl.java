@@ -79,27 +79,20 @@ public class MediatorImpl implements Mediator {
         }
         ;
         if (flipperElement instanceof Target) {
-            if(flipperElement.getId().equals("target0")){
-                this.target0.setElementStatus(false);
-                redirectBall(55);
-            };
-            if(flipperElement.getId().equals("target1")){
-                this.target0.setElementStatus(false);
-                redirectBall(55);
-            };
-            if(flipperElement.getId().equals("target2")){
-                this.target0.setElementStatus(false);
-                redirectBall(55);
+
+            flipperElement.setElementStatus(false);
+            System.out.println(flipperElement.getId()+" wurde nach dem Treffen eingefahren.");
+
+            if(!this.target0.getElementStatus() && !this.target1.getElementStatus() && !this.target2.getElementStatus()) {
+                System.out.println("WOW, sie haben alle Targets getroffen und bekommen einen Extrabonus!");
+                this.target0.setElementStatus(true);
+                this.target1.setElementStatus(true);
+                this.target2.setElementStatus(true);
+                System.out.println("Targets sind alle wieder hochgefahren!");
             }
+            redirectBall(65);
         }
         ;
-    }
-
-    public void targetWasHitAction(String target, FlipperElement flipperElement) {
-        if(flipperElement.getId().equals(target)){
-            this.target0.setElementStatus(false);
-            redirectBall(55);
-        }
     }
 
     public void redirectBall(Integer probabilityOfSuccessInPercent) {

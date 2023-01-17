@@ -8,6 +8,9 @@ public class Target implements FlipperElement, FlipperElementWithScore {
     private Integer elementScore = 0;
     private Mediator mediator;
     private Integer elementHitCount = 0;
+
+    //allTargetsTouched muss riesigen Bonus bringen, das ist nicht leicht zu kriegen!
+    private Integer allTargetsTouched = 0;
     private Boolean elementStatus = true;
 
     public Target(String id, Mediator mediator){
@@ -43,6 +46,10 @@ public class Target implements FlipperElement, FlipperElementWithScore {
         this.elementStatus = elementStatus;
     }
 
+    public void setAllTargetsTouched() {
+      this.allTargetsTouched += 1;
+    };
+
     @Override
     public Boolean getElementStatus() {
         return this.elementStatus;
@@ -57,12 +64,7 @@ public class Target implements FlipperElement, FlipperElementWithScore {
             this.mediator.directBall(this);
         }
 
-
     }
 
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
 
 }

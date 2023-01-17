@@ -67,8 +67,4 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
 
     }
 
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
 }

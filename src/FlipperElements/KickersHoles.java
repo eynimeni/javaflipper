@@ -66,8 +66,4 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
         }
     }
 
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
 }

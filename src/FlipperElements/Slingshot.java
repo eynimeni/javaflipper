@@ -47,8 +47,4 @@ public class Slingshot implements FlipperElement {
 
     }
 
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
 }
