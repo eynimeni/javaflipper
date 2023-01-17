@@ -33,12 +33,11 @@ public class Playing implements State {
         System.out.println("States.Playing!");
 
         //hier vielleicht eine Game Class die Punkte speichert (und mit Spiel verbunden ist)
-
         shootBall();
 
         //todo hier punkte highscore zeug
 
-        //todo check: evt ist endstate kein echter state sondern eine form von
+        //todo check: endstate
 
         //changeState() greift noch nicht richtig.
         //change state kann nicht im constructor kommen, sonst funktioniert es nicht (warum??)
@@ -89,7 +88,7 @@ public class Playing implements State {
 
     @Override
     public void insertCoin() {
-        context.insertCoin();
+
         //@ToDo: warum ändert sich hier der Status? Münzeinwurf verschafft ja nur mehr Credit. Play-State -> End-State nur wenn 3. Ball verloren gegangen ist, oder?
         context.setState(new Ready(context));
         //changeState();
