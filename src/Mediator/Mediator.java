@@ -12,4 +12,6 @@ public interface Mediator {
     void setElements(List<FlipperElement> flipperElements);
 
     void printFallingDownMessage();
+
+    void redirectBall(int probabilityOfSuccessInPercent);
 }
