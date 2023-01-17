@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Playing State Modifications and EndState">
-      <change afterPath="$PROJECT_DIR$/src/Base/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Base/Player.java" afterDir="false" />
+    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Flipper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673191865112</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class.">
+      <created>1673986163202</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673986163202</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +135,7 @@
     <MESSAGE value="state pattern working" />
     <MESSAGE value="double check in case of &quot;end game&quot; added" />
     <MESSAGE value="Playing State Modifications and EndState" />
-    <option name="LAST_COMMIT_MESSAGE" value="Playing State Modifications and EndState" />
+    <MESSAGE value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
   </component>
 </project>
