@@ -97,10 +97,23 @@ public class Playing implements State {
     public void playBall() {
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
 
+
+        //hier wird zufällig generiert, wieviele elemente bei dieser runde getroffen werden
+        Integer max = new Random().nextInt(15);
+
+        for(int i = 0; i < max; i++) {
+            getRandomFlipperElement(flipperElementList).elementGotHit();
+        }
+
+        if(max > 9) {
+            System.out.println("Lucky you! This was a good shot!");
+        }
+
        //zufälliges Element aus der Liste wird getroffen
-        getRandomFlipperElement(flipperElementList).elementGotHit();
+
 
         /* hier würde jedes Element der Reihe nach getroffen werden
+        kann auch gelöscht werden
                 for (var e: flipperElementList
              ) {
             e.elementGotHit();

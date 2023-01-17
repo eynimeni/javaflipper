@@ -50,6 +50,9 @@ public class Target extends FlipperComponent implements FlipperElement, FlipperE
 
     @Override
     public void elementGotHit() {
+        //todo evt noch punktelogik hier rein, oder alles am schluss per visitor!
+        //todo evt. machen mache elemente eine spezielle lustige sache, dann könnte die auch hier passieren
+        this.elementHitCount += 1;
         this.mediator.directBall(this);
 
     }
