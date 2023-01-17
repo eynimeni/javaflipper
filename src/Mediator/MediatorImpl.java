@@ -2,6 +2,9 @@ package Mediator;
 
 import FlipperElements.*;
 
+import javax.lang.model.element.Element;
+import java.util.List;
+
 //todo: nachdem ich hier nur auf die einzelnen, bereits konkret gebauten elemente zugreife (und nicht weiß, welches das nächste sein wird) ->
 //Frage: wie kann ich in einem anderen Element etwas verändern?
 
@@ -13,10 +16,17 @@ You can go even further and make the mediator responsible for the creation and d
 
 public class MediatorImpl implements Mediator {
 
+    /*
+        private Bumper bumper0;
+    private Bumper bumper1;
+    private Target target0;
+     */
+
+
     //array importieren
     // über konkretes array iterieren im konstruktor und die variablen fix vergeben
 
-    //public void registerFlipperElements(List<Element>) {}
+   // public void registerFlipperElements(List<Element> list) {}
 
     //private Bumper bumper0 =  list<Element>[0]
     //private Bumper bumper1 =  list<Element>[1]
@@ -24,6 +34,15 @@ public class MediatorImpl implements Mediator {
 
     //target0.openRamp()
 
+    /*
+    public void setElements(List<FlipperElement> flipperElementList) {
+         =  list<Element>[0]
+         =  list<Element>[1]
+         =  list<Element>[2]
+
+    }
+
+     */
     @Override
     public void directBall(FlipperElement flipperElement) {
         System.out.println(flipperElement.getId() + " got hit");

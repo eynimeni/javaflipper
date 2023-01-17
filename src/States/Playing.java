@@ -29,6 +29,7 @@ import java.util.Scanner;
 public class Playing implements State {
     private Flipper context;
     //@ToDo: Definition 1 Credit = 3 Kugeln
+    // das vielleicht irgendwo ausgeben?
     private Integer ballCount = 1;
 
     public Playing(Flipper context) {
