@@ -35,7 +35,11 @@ public class Playing implements State {
         this.context = context;
         System.out.println("States.Playing!");
 
+        //hier vielleicht eine Game Class die Punkte speichert (und mit Spiel verbunden ist)
+
         shootBall();
+
+        //todo hier punkte highscore zeug
 
         //todo check: evt ist endstate kein echter state sondern eine form von
 
@@ -61,6 +65,9 @@ public class Playing implements State {
                 System.out.println("Ball Number: " + this.ballCount + "/3");
                 this.ballCount++;
                 this.playBall();
+
+                //todo hier wird dann der visitor auch aufgerufen und speichert die punkte
+
                 this.shootBall();
             }
         } else {
@@ -107,6 +114,8 @@ public class Playing implements State {
         if(max > 9) {
             System.out.println("Lucky you! This was a good shot!");
         }
+
+        //todo hier könnte man noch einen zufall machen, wie oft man den ball vorm runterfallen bewahrt
 
        //zufälliges Element aus der Liste wird getroffen
 

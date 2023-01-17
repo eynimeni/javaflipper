@@ -46,6 +46,8 @@ public class Flipper {
         //FlipperElemente für FLipper erzeugen
         this.flipperElements = createFlipperElements();
 
+        //todo mediator die Liste übergeben! eine art getter in den mediator schreiben und hier aufrufen
+
 
     }
 
