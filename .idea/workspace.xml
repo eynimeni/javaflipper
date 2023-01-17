@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Playing State Modifications and EndState">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Flipper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

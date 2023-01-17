@@ -7,15 +7,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.SplittableRandom;
 
-//todo: nachdem ich hier nur auf die einzelnen, bereits konkret gebauten elemente zugreife (und nicht weiß, welches das nächste sein wird) ->
-//Frage: wie kann ich in einem anderen Element etwas verändern?
-
-/*
-Consider storing references to all components inside the mediator. This way, you could call any component from the mediator’s methods.
-You can go even further and make the mediator responsible for the creation and destruction of component objects. After this, the mediator may resemble a factory or a facade.
-
- */
-
 public class MediatorImpl implements Mediator {
 
 
@@ -37,16 +28,16 @@ public class MediatorImpl implements Mediator {
     public void setElements(List<FlipperElement> flipperElementList) {
         this.flipperElementList = flipperElementList;
 
-         this.bumper0 = (Bumper) flipperElementList.get(0);
-         this.bumper1 = (Bumper) flipperElementList.get(1);
-         this.target0 = (Target) flipperElementList.get(2);
-         this.target1 = (Target) flipperElementList.get(3);
-         this.target2 = (Target) flipperElementList.get(4);
-         this.kicker0 = (KickersHoles) flipperElementList.get(5);
-         this.kicker1 = (KickersHoles) flipperElementList.get(6);
-         this.ramp0 = (Ramp) flipperElementList.get(7);
-         this.slingshot0 = (Slingshot) flipperElementList.get(8);
-         this.slingshot1 = (Slingshot) flipperElementList.get(9);
+        this.bumper0 = (Bumper) flipperElementList.get(0);
+        this.bumper1 = (Bumper) flipperElementList.get(1);
+        this.target0 = (Target) flipperElementList.get(2);
+        this.target1 = (Target) flipperElementList.get(3);
+        this.target2 = (Target) flipperElementList.get(4);
+        this.kicker0 = (KickersHoles) flipperElementList.get(5);
+        this.kicker1 = (KickersHoles) flipperElementList.get(6);
+        this.ramp0 = (Ramp) flipperElementList.get(7);
+        this.slingshot0 = (Slingshot) flipperElementList.get(8);
+        this.slingshot1 = (Slingshot) flipperElementList.get(9);
     }
 
 
@@ -56,45 +47,47 @@ public class MediatorImpl implements Mediator {
 
         if (flipperElement instanceof Bumper) {
             //wenn bumper mind 3 mal getroffen werden, gibt es bonuspunkte
-            if(((Bumper) flipperElement).getElementHitCount() >2){
+            if (((Bumper) flipperElement).getElementHitCount() > 2) {
                 ((Bumper) flipperElement).turnOnSpecialBonusPoints();
             }
-
             redirectBall(90);
 
-        };
+        }
+        ;
         if (flipperElement instanceof FlipperElementsComposition) {
             //todo hier hinein eine logik, wie die composition tut
             redirectBall(60);
-        };
+        }
+        ;
         if (flipperElement instanceof KickersHoles) {
             redirectBall(93);
-        };
+        }
+        ;
         if (flipperElement instanceof Ramp) {
             redirectBall(97);
-        };
+        }
+        ;
         if (flipperElement instanceof Slingshot) {
             this.ramp0.setElementStatus(true);
             redirectBall(80);
-        };
+        }
+        ;
         if (flipperElement instanceof Target) {
             redirectBall(55);
-        };
-
+        }
+        ;
     }
-
 
     public void redirectBall(Integer probabilityOfSuccessInPercent) {
 
         SplittableRandom random = new SplittableRandom();
-        Integer randomInt = random.nextInt(1,101);
+        Integer randomInt = random.nextInt(1, 101);
         boolean successfullRedirection = randomInt <= probabilityOfSuccessInPercent;
 
-        if(successfullRedirection) {
+        if (successfullRedirection) {
             hitNextRandomElement();
-
         } else {
-            System.out.println("Ball fell down");
+            System.out.println("Watch out! Ball falling down!");
         }
 
     }
@@ -107,6 +100,5 @@ public class MediatorImpl implements Mediator {
     public FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
         return elements.get(new Random().nextInt(elements.size()));
     }
-
 
 }

@@ -21,10 +21,7 @@ package States;
 
 import FlipperElements.FlipperElement;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Playing implements State {
     private Flipper context;
@@ -58,7 +55,7 @@ public class Playing implements State {
     public void shootBall() {
 
         if (this.ballCount < 4) {
-            System.out.println("Do you want to shoot the ball? Y/N");
+            System.out.println("Do you want to shoot a ball? Y/N");
             Scanner scanner = new Scanner(System.in);
             String shooting = scanner.next();
 
@@ -107,33 +104,17 @@ public class Playing implements State {
 
         getRandomFlipperElement(flipperElementList).elementGotHit();
 
+        System.out.println("Pinball lever trying to catch that ball!");
 
-        /*
-        //hier wird zufällig generiert, wieviele elemente bei dieser runde getroffen werden
-        Integer max = new Random().nextInt(15);
-        for(int i = 0; i < max; i++) {
-            getRandomFlipperElement(flipperElementList).elementGotHit();
+            SplittableRandom random = new SplittableRandom();
+            boolean success = random.nextInt(1,101) <= 50;
+            if(success) {
+                System.out.println("OH YES! Caught it!");
+                playBall();
+            } else {
+                System.out.println("DAMM! LOST IT!");
+            }
         }
-
-        if(max > 9) {
-            System.out.println("Lucky you! This was a good shot!");
-        }
-
-         */
-
-        //todo hier könnte man noch einen zufall machen, wie oft man den ball vorm runterfallen bewahrt
-
-       //zufälliges Element aus der Liste wird getroffen
-
-
-        /* hier würde jedes Element der Reihe nach getroffen werden
-        kann auch gelöscht werden
-                for (var e: flipperElementList
-             ) {
-            e.elementGotHit();
-        }
-         */
-    }
 
     public FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
         return elements.get(new Random().nextInt(elements.size()));
