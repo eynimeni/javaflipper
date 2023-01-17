@@ -1,10 +1,12 @@
 package FlipperElements;
 
-public class Target extends FlipperElementWithScore implements FlipperElement {
+import Mediator.Mediator;
+
+public class Target extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;
-    //@ToDo: Delete Comment, when Mediator-Class is available; private Mediator mediator = null;
+    private Mediator mediator;
     private Integer elementHitCount = 0;
     private Boolean elementStatus = true;
 
@@ -15,7 +17,8 @@ public class Target extends FlipperElementWithScore implements FlipperElement {
     */
 
     //@ToDo: wenn Mediator vorhanden löschen!
-    public Target(String id){
+    public Target(String id, Mediator mediator){
+
         this.id = id;
     }
 
@@ -56,4 +59,10 @@ public class Target extends FlipperElementWithScore implements FlipperElement {
     public void elementGotHit() {
 
     }
+
+    @Override
+    public void notifyMediator(FlipperElement flipperElement) {
+
+    }
+
 }

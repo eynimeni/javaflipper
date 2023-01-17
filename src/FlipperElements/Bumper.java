@@ -1,6 +1,6 @@
 package FlipperElements;
 
-public class Bumper extends FlipperElementWithScore implements FlipperElement {
+public class Bumper extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;

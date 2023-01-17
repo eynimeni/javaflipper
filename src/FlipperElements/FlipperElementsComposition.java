@@ -6,7 +6,7 @@ import java.util.List;
 //Upon receiving a request, a container delegates the work to its sub-elements, processes intermediate results and then returns the final result to the client.
     //@ToDo: -> ich glaube daher, dass der Aufruf der Composition-Methoden zum Aufruf der Methoden der jeweiligen Elemente in der ArrayList führen muss.
 
-public class FlipperElementsComposition implements FlipperElement{
+public class FlipperElementsComposition extends FlipperComponent implements FlipperElement{
 
     private String id;
     private Boolean elementStatus = true;

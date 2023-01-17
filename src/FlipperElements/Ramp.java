@@ -1,6 +1,6 @@
 package FlipperElements;
 
-public class Ramp extends FlipperElementWithScore implements FlipperElement {
+public class Ramp extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
 
     private String id;

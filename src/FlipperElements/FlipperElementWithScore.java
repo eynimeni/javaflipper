@@ -1,8 +1,9 @@
 package FlipperElements;
 
 //FlipperElementsWithScore ist Abstrakte Klasse für jene FlipperElemente, die eine Wertigkeit haben und im Spiel Punkte liefern.
+//-> ist jetzt ein Interface geworden, damit die abstrakte Klasse des Mediators vererbt werden kann (man kann nur von 1 Klasse, jedoch von mehreren Interfaces erben)
 
-public abstract  class FlipperElementWithScore implements FlipperElement {
+public interface FlipperElementWithScore extends FlipperElement {
 
     //Die Punkte festlegen, die man bei einem Treffer des Elements als Spieler erhält
     abstract void setElementScoreValue(Integer elementScoreValue);

@@ -12,6 +12,7 @@ package States;/*
  */
 
 import FlipperElements.*;
+import Mediator.Mediator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class Flipper {
     private State state;
     //States.Flipper hält in der Liste die FlipperElemente
     private List<FlipperElement> flipperElements;
+
 
     /*@ToDo: Vorschlag für weitere Attribute der Flipperklasse.
     public players: Player[] //Array der Spieler, die schon gespielt haben. Auch Eingabe eines neuen Spielers soll möglich sein. Total-Score = 0, Last-Game-Score = 0 zu beginn.
@@ -166,7 +168,7 @@ public class Flipper {
         flipperElementsComposition.add(bumper);
 
         //@ToDo: für Verwendung mit Mediator muss Constructorparamenter angepasst werden!
-        Target target = new Target("compTarget");
+        Target target = new Target("compTarget", );
         flipperElementsComposition.add(target);
 
         for(int i = 0; i<2; i++){

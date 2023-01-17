@@ -19,4 +19,6 @@ public interface FlipperElement {
     //Wenn ein Element getroffen worden ist, soll über den Mediator in Erfahrung gebracht werden, was als nächstes passiert.
     void elementGotHit();
 
+    void notifyMediator(FlipperElement flipperElement);
+
 }

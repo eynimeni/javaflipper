@@ -1,7 +1,7 @@
 package FlipperElements;
 
 //@Kickers und Holes sind dasselbe.
-public class KickersHoles extends FlipperElementWithScore implements FlipperElement {
+public class KickersHoles extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;
