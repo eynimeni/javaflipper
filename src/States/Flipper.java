@@ -1,31 +1,30 @@
-package States;
-
-/*
+package States;/*
 @ToDo: Arbeitskommentare:
     Hab mich ja an diesen Inputs orientiert https://refactoring.guru/design-patterns/state. Ich denke, dass die Context-Klasse schon unsere Flipperklasse ist.
     Wg. diesem Statement: "Instead of implementing all behaviors on its own, the original object, called context, stores a reference to one of the state objects that represents its current state, and delegates all the state-related work to that object."
     Schlage daher vor, dass wir:
-    - Flipper-Klasse kommt dann auch aus dem Statespackage wieder raus. Steht mal auf selber Ebene wie die Main.
+    - States.Flipper-Klasse kommt dann auch aus dem Statespackage wieder raus. Steht mal auf selber Ebene wie die Main.
         //->hier gibt es vielleicht ein Problem mit der Vererbung des Interfaces (zumindest schreit die IDE), drum hab ich es mal gelassen.
         // Ok, sehen wir uns noch an.
     ----
-    Erster Schritt? Flipper mal sehr rudimentär programmieren, so dass Status und Statuswechsel korrekt funktioneren?
+    Erster Schritt? States.Flipper mal sehr rudimentär programmieren, so dass Status und Statuswechsel korrekt funktioneren?
     Dann Spiellogik via Playing Klasse und Kompositum, Mediator etc?
  */
 
 import FlipperElements.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Flipper {
 
     private static Flipper singletonFlipper;
-    //@ToDo: Ist der Credit nicht auch vom Status abhängig? NoCredit -> Credit = 0, Ready/Playing/EndState -> Credit >= 1 und gehört als Attribut inkl. dazugehöriger Methoden in den State? Oder als globale Variable zum Flipper?
+    //@ToDo: Ist der Credit nicht auch vom Status abhängig? NoCredit -> Credit = 0, Ready/Playing/EndState -> Credit >= 1 und gehört als Attribut inkl. dazugehöriger Methoden in den State? Oder als globale Variable zum States.Flipper?
     //-> dafür brauchen wir keine Variable, diese Logik ist im Endstate. Nach dem Spiel wird geschaut ob noch Credit da ist, dann entweder -> No Credit oder Ready State.
 
     private Integer credit = 0;
     private State state;
-    //Flipper hält in der Liste die FlipperElemente
+    //States.Flipper hält in der Liste die FlipperElemente
     private List<FlipperElement> flipperElements;
 
     /*@ToDo: Vorschlag für weitere Attribute der Flipperklasse.
@@ -76,6 +75,7 @@ public class Flipper {
     }
 
     //@ToDo: passiert bei jedem Spielstart, also Wechsel vom Ready in den Playing State, da ja pro Credit 1 Spiel mit 3 Kugeln, oder?
+    //-> ja genau, es passiert, wenn im ready state der play button gedrückt wird!
     public void decreaseCredit() {
         if (this.credit > 0) {
             this.credit--;

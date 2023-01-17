@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Welcome to our Flipper!");
+        System.out.println("Welcome to our States.Flipper!");
         Flipper context = Flipper.getSingleFlipperInstance();
         boolean playing = true;
 

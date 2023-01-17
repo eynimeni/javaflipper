@@ -20,6 +20,6 @@ public class Ready implements State {
     public void insertCoin() {
 
         //@ToDo: Credit-Implementierung aufnehmen?
-        // -> das passiert im Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
+        // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
     }
 }

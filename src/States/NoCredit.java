@@ -19,6 +19,7 @@ public class NoCredit implements State {
         context.setState(new Ready(context));
 
         //@ToDo: Credit-Implementierung aufnehmen?
+        //-> Credit wird in der Flipper Klasse getrackt
 
     }
 }

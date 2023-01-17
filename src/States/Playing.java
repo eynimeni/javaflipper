@@ -10,7 +10,7 @@ package States;
     //-> das ist eh schon
     - Kugel abschießen, so lange es Kugeln gibt möglich
     //-> ja genau, also 3 mal pro Münze
-    - Nach Abschießen der Kugel, durchläuft diese das Spielfeld und trifft die unterschiedlichen Flipper-Elemente (Bumper, Slingshot ...)
+    - Nach Abschießen der Kugel, durchläuft diese das Spielfeld und trifft die unterschiedlichen States.Flipper-Elemente (Bumper, Slingshot ...)
         * Hierzu soll dann die Spiellogik implementiert werden, die das Zusammenspiel und die entstehenden Punkte steuert und ermittelt -> Mediator- /Visitor-Pattern?
         * Betätigen der Flipperhebel in Spiellogik auch "random" simulieren. Oder den User per Eingabe dazu auffordern?
         // da bin ich mir auch nicht sicher!!
@@ -65,7 +65,7 @@ public class Playing implements State {
 
     }
 
-    //@ToDo: sowohl Flipper (Context) als auch Statusklassen, sollen Statuswechsel durchführen können: "Both context and concrete states can set the next state of the context and perform the actual state transition by replacing the state object linked to the context.".
+    //@ToDo: sowohl States.Flipper (Context) als auch Statusklassen, sollen Statuswechsel durchführen können: "Both context and concrete states can set the next state of the context and perform the actual state transition by replacing the state object linked to the context.".
     //-> meiner Meinung nach, haben wir das eh so!
 
     public void changeState() {
@@ -86,6 +86,6 @@ public class Playing implements State {
         changeState();
 
         //@ToDo: Credit-Implementierung aufnehmen?
-        // -> das passiert im Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
+        // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
     }
 }
