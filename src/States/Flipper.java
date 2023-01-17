@@ -45,6 +45,7 @@ public class Flipper {
 
         //FlipperElemente für FLipper erzeugen
         this.flipperElements = createFlipperElements();
+        this.mediator.setElements(this.flipperElements);
 
 
 

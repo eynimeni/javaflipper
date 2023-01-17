@@ -16,33 +16,34 @@ You can go even further and make the mediator responsible for the creation and d
 
 public class MediatorImpl implements Mediator {
 
-    /*
-        private Bumper bumper0;
+
+    private Bumper bumper0;
     private Bumper bumper1;
+
     private Target target0;
-     */
+    private Target target1;
+    private Target target2;
+    private KickersHoles kicker0;
+    private KickersHoles kicker1;
+    private Ramp ramp0;
+    private Slingshot slingshot0;
+    private Slingshot slingshot1;
+    private FlipperElementsComposition composition1;
 
-
-    //array importieren
-    // über konkretes array iterieren im konstruktor und die variablen fix vergeben
-
-   // public void registerFlipperElements(List<Element> list) {}
-
-    //private Bumper bumper0 =  list<Element>[0]
-    //private Bumper bumper1 =  list<Element>[1]
-    //private Target target0 =  list<Element>[2]
-
-    //target0.openRamp()
-
-    /*
     public void setElements(List<FlipperElement> flipperElementList) {
-         =  list<Element>[0]
-         =  list<Element>[1]
-         =  list<Element>[2]
-
+         this.bumper0 = (Bumper) flipperElementList.get(0);
+         this.bumper1 = (Bumper) flipperElementList.get(1);
+         this.target0 = (Target) flipperElementList.get(2);
+         this.target1 = (Target) flipperElementList.get(3);
+         this.target2 = (Target) flipperElementList.get(4);
+         this.kicker0 = (KickersHoles) flipperElementList.get(5);
+         this.kicker1 = (KickersHoles) flipperElementList.get(6);
+         this.ramp0 = (Ramp) flipperElementList.get(7);
+         this.slingshot0 = (Slingshot) flipperElementList.get(8);
+         this.slingshot1 = (Slingshot) flipperElementList.get(9);
     }
 
-     */
+
     @Override
     public void directBall(FlipperElement flipperElement) {
         System.out.println(flipperElement.getId() + " got hit");
@@ -67,8 +68,8 @@ public class MediatorImpl implements Mediator {
             System.out.println("you hit a ramp");
         };
         if (flipperElement instanceof Slingshot) {
-
-            System.out.println("you hit a slingshot");
+            this.ramp0.setElementStatus(true);
+            System.out.println("Ramp is now open!");
         };
         if (flipperElement instanceof Target) {
             System.out.println("you hit a target");

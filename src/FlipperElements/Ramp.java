@@ -44,6 +44,7 @@ public class Ramp extends FlipperComponent implements FlipperElement, FlipperEle
     @Override
     public void setElementStatus(Boolean elementStatus) {
         this.elementStatus = elementStatus;
+        System.out.println("Ramp open: "+ this.elementStatus);
     }
 
     @Override
