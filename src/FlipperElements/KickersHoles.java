@@ -3,7 +3,7 @@ package FlipperElements;
 import Mediator.Mediator;
 
 //@Kickers und Holes sind dasselbe.
-public class KickersHoles extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
+public class KickersHoles implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;

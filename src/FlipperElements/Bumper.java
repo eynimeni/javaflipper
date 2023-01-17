@@ -2,7 +2,7 @@ package FlipperElements;
 
 import Mediator.Mediator;
 
-public class Bumper extends FlipperComponent implements FlipperElement, FlipperElementWithScore {
+public class Bumper implements FlipperElement, FlipperElementWithScore {
 
     private String id;
     private Integer elementScore = 0;

@@ -16,7 +16,6 @@ package States;
         // da bin ich mir auch nicht sicher!!
     - Kugel rollt ins "Aus" -> Kugelanzahl prüfen. Wenn Kugelanzahl > 0, dann wieder autom. nächste Kugel laden.
         * Wenn "3. Kugel ins Aus gelangt" -> Wechsel in EndState
-
  */
 
 import FlipperElements.FlipperElement;

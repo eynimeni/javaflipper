@@ -3,7 +3,7 @@ package FlipperElements;
 import Mediator.Mediator;
 
 //Slingshots = Prellkontakte bewegen die Kugel eigentlich nur in bestimmte Richtungen und liefern keine Punkte.
-public class Slingshot extends FlipperComponent implements FlipperElement {
+public class Slingshot implements FlipperElement {
 
     private String id;
     private Mediator mediator;
