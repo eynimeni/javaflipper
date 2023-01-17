@@ -4,6 +4,7 @@ import FlipperElements.*;
 
 import javax.lang.model.element.Element;
 import java.util.List;
+import java.util.Random;
 
 //todo: nachdem ich hier nur auf die einzelnen, bereits konkret gebauten elemente zugreife (und nicht weiß, welches das nächste sein wird) ->
 //Frage: wie kann ich in einem anderen Element etwas verändern?
@@ -30,7 +31,11 @@ public class MediatorImpl implements Mediator {
     private Slingshot slingshot1;
     private FlipperElementsComposition composition1;
 
+    private List<FlipperElement> flipperElementList;
+
     public void setElements(List<FlipperElement> flipperElementList) {
+        this.flipperElementList = flipperElementList;
+
          this.bumper0 = (Bumper) flipperElementList.get(0);
          this.bumper1 = (Bumper) flipperElementList.get(1);
          this.target0 = (Target) flipperElementList.get(2);
@@ -49,22 +54,27 @@ public class MediatorImpl implements Mediator {
         System.out.println(flipperElement.getId() + " got hit");
 
         if (flipperElement instanceof Bumper) {
-            //wenn mind 3 bumper getroffen werden, gibt es bonuspunkte
+            //wenn bumper mind 3 mal getroffen werden, gibt es bonuspunkte
             if(((Bumper) flipperElement).getElementHitCount() >2){
                 ((Bumper) flipperElement).turnOnSpecialBonusPoints();
             }
+
+
+
             System.out.println("you hit a Bumper");
+
+
+
         };
         if (flipperElement instanceof FlipperElementsComposition) {
-            //todo hier hinein eine logik, dass die rampe aktiviert wird () wenn vorher ein slingshot getroffen wurde
-           // ramp.setElementStatus(true)
-
+            //todo hier hinein eine logik, wie die composition tut
             System.out.println("you hit a composition");
         };
         if (flipperElement instanceof KickersHoles) {
             System.out.println("you hit a kicker");
         };
         if (flipperElement instanceof Ramp) {
+
             System.out.println("you hit a ramp");
         };
         if (flipperElement instanceof Slingshot) {
@@ -77,6 +87,14 @@ public class MediatorImpl implements Mediator {
 
     }
 
+    public void hitNextRandomElement() {
+        FlipperElement element = getRandomFlipperElement(this.flipperElementList);
+        element.elementGotHit();
+    }
+
+    public FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
+        return elements.get(new Random().nextInt(elements.size()));
+    }
 
     public void reactOnSlingshot() {
 
