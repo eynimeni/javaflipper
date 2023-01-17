@@ -54,8 +54,6 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
 
     @Override
     public void elementGotHit() {
-
-        //default ist jetzt mal false
         if(elementStatus) {
             this.elementHitCount += 1;
             this.mediator.directBall(this);
@@ -65,10 +63,4 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
             this.mediator.printFallingDownMessage();
         }
 
-    }
-
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
-}
+}}

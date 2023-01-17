@@ -8,6 +8,10 @@ public class Target implements FlipperElement, FlipperElementWithScore {
     private Integer elementScore = 0;
     private Mediator mediator;
     private Integer elementHitCount = 0;
+
+    //todo punktevisitor: allTargetsTouched muss riesigen Bonus bringen, das ist nicht leicht zu kriegen!
+    //todo resetvisitor: muss bei neuem ball alle target elementStatus wieder auf true setzen
+    private Integer allTargetsTouched = 0;
     private Boolean elementStatus = true;
 
     public Target(String id, Mediator mediator){
@@ -43,6 +47,10 @@ public class Target implements FlipperElement, FlipperElementWithScore {
         this.elementStatus = elementStatus;
     }
 
+    public void setAllTargetsTouched() {
+      this.allTargetsTouched += 1;
+    };
+
     @Override
     public Boolean getElementStatus() {
         return this.elementStatus;
@@ -54,15 +62,11 @@ public class Target implements FlipperElement, FlipperElementWithScore {
             this.elementHitCount += 1;
             this.mediator.directBall(this);
         } else {
-            this.mediator.directBall(this);
+            this.mediator.redirectBall(100);
         }
 
 
     }
 
-    @Override
-    public void notifyMediator(FlipperElement flipperElement) {
-
-    }
 
 }

@@ -43,6 +43,7 @@ public class MediatorImpl implements Mediator {
 
     @Override
     public void directBall(FlipperElement flipperElement) {
+
         System.out.println("    " + flipperElement.getId() + " got hit");
 
         if (flipperElement instanceof Bumper) {
@@ -63,8 +64,7 @@ public class MediatorImpl implements Mediator {
             //kicker0 lenkt fix zur rampe
             if (flipperElement.getId().equals("kicker0")) {
                 this.ramp0.elementGotHit();
-            }
-            else {
+            } else {
                 redirectBall(80);
             }
         }
@@ -79,30 +79,32 @@ public class MediatorImpl implements Mediator {
         }
         ;
         if (flipperElement instanceof Target) {
-            if(flipperElement.getId().equals("target0")){
-                this.target0.setElementStatus(false);
-                redirectBall(55);
-            };
-            if(flipperElement.getId().equals("target1")){
-                this.target0.setElementStatus(false);
-                redirectBall(55);
-            };
-            if(flipperElement.getId().equals("target2")){
-                this.target0.setElementStatus(false);
-                redirectBall(55);
+            //targets werden eingefahren wenn sie getroffen werden. sind alle 3 eingefahren, gibt es bonus und sie fahren wieder hoch.
+
+            flipperElement.setElementStatus(false);
+            System.out.println(flipperElement.getId() + " wurde nach dem Treffer eingefahren.");
+
+            if (!this.target0.getElementStatus() && !this.target1.getElementStatus() && !this.target2.getElementStatus()) {
+                System.out.println("WOW, sie haben alle Targets getroffen und bekommen einen Extrabonus!");
+                ((Target) flipperElement).setAllTargetsTouched();
+                this.target0.setElementStatus(true);
+                this.target1.setElementStatus(true);
+                this.target2.setElementStatus(true);
+                System.out.println("Targets sind alle wieder hochgefahren!");
             }
+            redirectBall(65);
         }
         ;
     }
 
-    public void targetWasHitAction(String target, FlipperElement flipperElement) {
-        if(flipperElement.getId().equals(target)){
-            this.target0.setElementStatus(false);
-            redirectBall(55);
-        }
+
+    public void printFallingDownMessage() {
+        String fallingDownMessage = "Watch out! Ball falling down!";
+        System.out.println(fallingDownMessage);
     }
 
-    public void redirectBall(Integer probabilityOfSuccessInPercent) {
+    @Override
+    public void redirectBall(int probabilityOfSuccessInPercent) {
 
         SplittableRandom random = new SplittableRandom();
         Integer randomInt = random.nextInt(1, 101);
@@ -114,11 +116,6 @@ public class MediatorImpl implements Mediator {
             printFallingDownMessage();
         }
 
-    }
-
-    public void printFallingDownMessage() {
-        String fallingDownMessage = "Watch out! Ball falling down!";
-        System.out.println(fallingDownMessage);
     }
 
     public void hitNextRandomElement() {
