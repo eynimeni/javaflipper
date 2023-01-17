@@ -53,6 +53,8 @@ public class Target implements FlipperElement, FlipperElementWithScore {
         if(elementStatus) {
             this.elementHitCount += 1;
             this.mediator.directBall(this);
+        } else {
+            this.mediator.directBall(this);
         }
 
 

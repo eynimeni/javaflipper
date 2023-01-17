@@ -56,7 +56,6 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
             this.elementHitCount += 1;
             this.mediator.directBall(this);
         }
-
     }
 
     @Override

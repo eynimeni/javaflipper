@@ -10,4 +10,6 @@ public interface Mediator {
     public void directBall(FlipperElement flipperElement);
 
     void setElements(List<FlipperElement> flipperElements);
+
+    void printFallingDownMessage();
 }

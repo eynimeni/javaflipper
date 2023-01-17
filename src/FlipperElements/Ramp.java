@@ -60,6 +60,10 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
             this.elementHitCount += 1;
             this.mediator.directBall(this);
         }
+        else {
+            System.out.println("Ramp is closed");
+            this.mediator.printFallingDownMessage();
+        }
 
     }
 

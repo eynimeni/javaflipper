@@ -60,7 +60,13 @@ public class MediatorImpl implements Mediator {
         }
         ;
         if (flipperElement instanceof KickersHoles) {
-            redirectBall(93);
+            //kicker0 lenkt fix zur rampe
+            if (flipperElement.getId().equals("kicker0")) {
+                this.ramp0.elementGotHit();
+            }
+            else {
+                redirectBall(80);
+            }
         }
         ;
         if (flipperElement instanceof Ramp) {
@@ -73,9 +79,27 @@ public class MediatorImpl implements Mediator {
         }
         ;
         if (flipperElement instanceof Target) {
-            redirectBall(55);
+            if(flipperElement.getId().equals("target0")){
+                this.target0.setElementStatus(false);
+                redirectBall(55);
+            };
+            if(flipperElement.getId().equals("target1")){
+                this.target0.setElementStatus(false);
+                redirectBall(55);
+            };
+            if(flipperElement.getId().equals("target2")){
+                this.target0.setElementStatus(false);
+                redirectBall(55);
+            }
         }
         ;
+    }
+
+    public void targetWasHitAction(String target, FlipperElement flipperElement) {
+        if(flipperElement.getId().equals(target)){
+            this.target0.setElementStatus(false);
+            redirectBall(55);
+        }
     }
 
     public void redirectBall(Integer probabilityOfSuccessInPercent) {
@@ -87,9 +111,14 @@ public class MediatorImpl implements Mediator {
         if (successfullRedirection) {
             hitNextRandomElement();
         } else {
-            System.out.println("Watch out! Ball falling down!");
+            printFallingDownMessage();
         }
 
+    }
+
+    public void printFallingDownMessage() {
+        String fallingDownMessage = "Watch out! Ball falling down!";
+        System.out.println(fallingDownMessage);
     }
 
     public void hitNextRandomElement() {
