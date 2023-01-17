@@ -5,6 +5,7 @@ import FlipperElements.*;
 import javax.lang.model.element.Element;
 import java.util.List;
 import java.util.Random;
+import java.util.SplittableRandom;
 
 //todo: nachdem ich hier nur auf die einzelnen, bereits konkret gebauten elemente zugreife (und nicht weiß, welches das nächste sein wird) ->
 //Frage: wie kann ich in einem anderen Element etwas verändern?
@@ -51,7 +52,7 @@ public class MediatorImpl implements Mediator {
 
     @Override
     public void directBall(FlipperElement flipperElement) {
-        System.out.println(flipperElement.getId() + " got hit");
+        System.out.println("    " + flipperElement.getId() + " got hit");
 
         if (flipperElement instanceof Bumper) {
             //wenn bumper mind 3 mal getroffen werden, gibt es bonuspunkte
@@ -59,31 +60,42 @@ public class MediatorImpl implements Mediator {
                 ((Bumper) flipperElement).turnOnSpecialBonusPoints();
             }
 
-
-
-            System.out.println("you hit a Bumper");
-
-
+            redirectBall(90);
 
         };
         if (flipperElement instanceof FlipperElementsComposition) {
             //todo hier hinein eine logik, wie die composition tut
-            System.out.println("you hit a composition");
+            redirectBall(60);
         };
         if (flipperElement instanceof KickersHoles) {
-            System.out.println("you hit a kicker");
+            redirectBall(93);
         };
         if (flipperElement instanceof Ramp) {
-
-            System.out.println("you hit a ramp");
+            redirectBall(97);
         };
         if (flipperElement instanceof Slingshot) {
             this.ramp0.setElementStatus(true);
-            System.out.println("Ramp is now open!");
+            redirectBall(80);
         };
         if (flipperElement instanceof Target) {
-            System.out.println("you hit a target");
+            redirectBall(55);
         };
+
+    }
+
+
+    public void redirectBall(Integer probabilityOfSuccessInPercent) {
+
+        SplittableRandom random = new SplittableRandom();
+        Integer randomInt = random.nextInt(1,101);
+        boolean successfullRedirection = randomInt <= probabilityOfSuccessInPercent;
+
+        if(successfullRedirection) {
+            hitNextRandomElement();
+
+        } else {
+            System.out.println("Ball fell down");
+        }
 
     }
 
@@ -95,11 +107,6 @@ public class MediatorImpl implements Mediator {
     public FlipperElement getRandomFlipperElement(List<FlipperElement> elements) {
         return elements.get(new Random().nextInt(elements.size()));
     }
-
-    public void reactOnSlingshot() {
-
-
-    };
 
 
 }

@@ -1,5 +1,7 @@
 package FlipperElements;
 
+import Mediator.Mediator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,12 @@ public class FlipperElementsComposition extends FlipperComponent implements Flip
     private Boolean elementStatus = true;
     private List<FlipperElement> flipperElementsList = new ArrayList<>();
 
-    public FlipperElementsComposition(String id){
+    private Mediator mediator;
+
+    public FlipperElementsComposition(String id, Mediator mediator){
+
         this.id = id;
+        this.mediator = mediator;
     }
 
     public String getId() {
@@ -39,6 +45,7 @@ public class FlipperElementsComposition extends FlipperComponent implements Flip
     @Override
     public void elementGotHit() {
         //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
+        this.mediator.directBall(this);
 
     }
 

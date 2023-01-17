@@ -168,7 +168,7 @@ public class Flipper {
     //Methode um eine Composition aus FlipperElementen zu erzeugen. Wird über createFlipperElements() aufgerufen
     private FlipperElementsComposition createFlipperElementsComposition(){
 
-        FlipperElementsComposition flipperElementsComposition = new FlipperElementsComposition("composition1");
+        FlipperElementsComposition flipperElementsComposition = new FlipperElementsComposition("composition1", this.mediator);
 
         Bumper bumper = new Bumper("compBumper", this.mediator);
         flipperElementsComposition.add(bumper);

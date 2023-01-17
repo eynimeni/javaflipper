@@ -96,7 +96,7 @@ public class Playing implements State {
         context.insertCoin();
         //@ToDo: warum ändert sich hier der Status? Münzeinwurf verschafft ja nur mehr Credit. Play-State -> End-State nur wenn 3. Ball verloren gegangen ist, oder?
         context.setState(new Ready(context));
-        changeState();
+        //changeState();
 
         //@ToDo: Credit-Implementierung aufnehmen?
         // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
@@ -105,9 +105,12 @@ public class Playing implements State {
     public void playBall() {
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
 
+        getRandomFlipperElement(flipperElementList).elementGotHit();
+
+
+        /*
         //hier wird zufällig generiert, wieviele elemente bei dieser runde getroffen werden
         Integer max = new Random().nextInt(15);
-
         for(int i = 0; i < max; i++) {
             getRandomFlipperElement(flipperElementList).elementGotHit();
         }
@@ -115,6 +118,8 @@ public class Playing implements State {
         if(max > 9) {
             System.out.println("Lucky you! This was a good shot!");
         }
+
+         */
 
         //todo hier könnte man noch einen zufall machen, wie oft man den ball vorm runterfallen bewahrt
 
