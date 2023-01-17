@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Playing State Modifications and EndState">
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Flipper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Ready.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Ready.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mediator/FlipperController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mediator/FlipperControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,11 +38,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "dart.analysis.tool.window.visible": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
