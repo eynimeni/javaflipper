@@ -41,6 +41,7 @@ public class Slingshot extends FlipperComponent implements FlipperElement {
 
     @Override
     public void elementGotHit() {
+        this.mediator.directBall(this);
 
     }
 

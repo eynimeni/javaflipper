@@ -60,7 +60,7 @@ public class Bumper extends FlipperComponent implements FlipperElement, FlipperE
 
     @Override
     public void elementGotHit() {
-
+        this.mediator.directBall(this);
     }
 
     @Override

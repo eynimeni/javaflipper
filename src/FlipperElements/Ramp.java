@@ -53,6 +53,7 @@ public class Ramp extends FlipperComponent implements FlipperElement, FlipperEle
 
     @Override
     public void elementGotHit() {
+        this.mediator.directBall(this);
 
     }
 
