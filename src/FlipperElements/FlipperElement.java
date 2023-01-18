@@ -2,6 +2,8 @@ package FlipperElements;
 
 //Alle FlipperElement müssen dieses Interface implementieren!
 
+import Visitor.Visitor;
+
 public interface FlipperElement {
 
     //Info: Den Mediator zum konkreten FlipperElement zur Realisierung des Mediator-Patterns via Konstruktor des FlipperElements setzen
@@ -20,6 +22,5 @@ public interface FlipperElement {
 
     //Wenn ein Element getroffen worden ist, soll über den Mediator in Erfahrung gebracht werden, was als nächstes passiert.
     void elementGotHit();
-
 
 }

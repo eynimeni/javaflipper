@@ -48,7 +48,7 @@ public class Main {
     private static String inputScanner(){
 
         Scanner scanner = new Scanner(System.in);
-        return scanner.next();
+        return scanner.nextLine();
 
     }
 

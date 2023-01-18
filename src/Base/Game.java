@@ -19,7 +19,7 @@ public class Game {
     }
 
     public void setTotalScore(Integer totalScore) {
-        this.totalScore = totalScore;
+        this.totalScore += totalScore;
     }
 
     public Integer getLastGamesScore() {

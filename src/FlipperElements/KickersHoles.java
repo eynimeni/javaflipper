@@ -1,15 +1,16 @@
 package FlipperElements;
 
 import Mediator.Mediator;
+import Visitor.Visitor;
 
 //@Kickers und Holes sind dasselbe.
 public class KickersHoles implements FlipperElement, FlipperElementWithScore {
 
     private String id;
-    private Integer elementScore = 0;
+    private int elementScore = 0;
 
     private Mediator mediator;
-    private Integer elementHitCount = 0;
+    private int elementHitCount = 0;
     private Boolean elementStatus = true;
 
     /*@ToDo: Delete Comment, when Mediator-Class is available;
@@ -35,17 +36,32 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
 
     @Override
     public void setElementScoreValue(Integer elementScoreValue) {
-        this.elementScore = elementScoreValue;
+        this.elementScore += elementScoreValue;
+    }
+
+    @Override
+    public int getElementScore() {
+        return elementScore;
+    }
+
+    @Override
+    public void resetElementScoreValue(){
+        this.elementScore = 0;
     }
 
     @Override
     public void setElementHitCount(Integer elementHitCount) {
-        this.elementHitCount = elementHitCount;
+        this.elementHitCount += elementHitCount;
     }
 
     @Override
-    public Integer getElementHitCount() {
+    public int getElementHitCount() {
         return this.elementHitCount;
+    }
+
+    @Override
+    public void resetElementHitCount(){
+        this.elementHitCount = 0;
     }
 
     @Override
@@ -61,9 +77,16 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
     @Override
     public void elementGotHit() {
         if(elementStatus) {
-            this.elementHitCount += 1;
+            //Gegen Aufruf setter ersetzt -> this.elementHitCount += 1;
+            this.setElementHitCount(1);
+            this.setElementScoreValue(20);
+            System.out.println("Baaam, Kicker/Hole +20 Points!");
             this.mediator.directBall(this);
         }
     }
 
+    @Override
+    public int acceptVisitor(Visitor visitor) {
+       return visitor.visitKickersHoles(this);
+    }
 }

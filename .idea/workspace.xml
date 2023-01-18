@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class.">
+      <change afterPath="$PROJECT_DIR$/src/Visitor/ResetVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Visitor/ScoreVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Visitor/Visitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementWithScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementWithScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Ramp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Ramp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Slingshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Slingshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Target.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
-
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
