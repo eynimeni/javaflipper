@@ -87,13 +87,8 @@ public class Playing implements State {
         System.out.println("Authors of the Software are Tom and Magdalena.");
 
         if(context.getCredit() > 0) {
-            System.out.println("Do you want to play again? Y/N");
-            Scanner scanner = new Scanner(System.in);
-            String playing = scanner.next();
-
-            if (Objects.equals(playing, "Y")) {
-                this.shootBall();
-            }
+            context.decreaseCredit();
+            this.shootBall();
         } else {
             System.out.println("You have no more credit left.");
             //go to nocredit?

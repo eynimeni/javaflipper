@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Visitor successfully implemented! Adapted allmost all classes.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
