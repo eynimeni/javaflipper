@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Visitor/ScoreVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visitor/ScoreVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

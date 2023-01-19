@@ -6,22 +6,30 @@ public class ScoreVisitor implements Visitor{
 
     @Override
     public int visitBumper(Bumper bumper) {
-        return calculateScore(bumper);
+        int bumperScore = calculateScore(bumper);
+        resetHitCount(bumper);
+        return bumperScore;
     }
 
     @Override
     public int visitKickersHoles(KickersHoles kickersHoles) {
-        return calculateScore(kickersHoles);
+        int kickersHolesScore = calculateScore(kickersHoles);
+        resetHitCount(kickersHoles);
+        return kickersHolesScore;
     }
 
     @Override
     public int visitRamp(Ramp ramp) {
-        return calculateScore(ramp);
+        int rampScore = calculateScore(ramp);
+        resetHitCount(ramp);
+        return rampScore;
     }
 
     @Override
     public int visitTarget(Target target) {
-        return calculateScore(target);
+        int visitTarget = calculateScore(target);
+        resetHitCount(target);
+        return visitTarget;
     }
 
     @Override
@@ -37,7 +45,9 @@ public class ScoreVisitor implements Visitor{
         int hitCount = flipperElement.getElementHitCount();
 
         return score*hitCount;
-
+    }
+    private void resetHitCount(FlipperElementWithScore flipperElementWithScore) {
+        flipperElementWithScore.resetElementHitCount();
     }
 
 }
