@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class.">
-      <change afterPath="$PROJECT_DIR$/src/Visitor/ResetVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Visitor/ScoreVisitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Visitor/Visitor.java" afterDir="false" />
+    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Visitor successfully implemented! Adapted allmost all classes.">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/AbstractFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/ChooseOption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/ConcreteFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/CreditLost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/EnterPlayerName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/GoodBye.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/QuitGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/WelcomeMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementWithScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementWithScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Ramp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Ramp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Slingshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Slingshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Target.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +29,33 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,7 +69,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="AbstractFactory" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -64,6 +89,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
@@ -82,6 +108,7 @@
       <workItem from="1673540892326" duration="1281000" />
       <workItem from="1673810332427" duration="6470000" />
       <workItem from="1673951894273" duration="2078000" />
+      <workItem from="1674151910651" duration="7169000" />
     </task>
     <task id="LOCAL-00001" summary="basic state pattern implemented">
       <created>1672675809765</created>
