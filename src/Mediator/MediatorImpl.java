@@ -44,7 +44,7 @@ public class MediatorImpl implements Mediator {
     @Override
     public void directBall(FlipperElement flipperElement) {
 
-        System.out.println("    " + flipperElement.getId() + " got hit");
+        //System.out.println("    " + flipperElement.getId() + " got hit");
 
         if (flipperElement instanceof Bumper) {
             //wenn bumper mind 3 mal getroffen werden, gibt es bonuspunkte
@@ -56,7 +56,6 @@ public class MediatorImpl implements Mediator {
         }
         ;
         if (flipperElement instanceof FlipperElementsComposition) {
-            //todo hier hinein eine logik, wie die composition tut
             redirectBall(60);
         }
         ;
@@ -116,7 +115,6 @@ public class MediatorImpl implements Mediator {
             printFallingDownMessage();
         }
     }
-
     public void hitNextRandomElement() {
         FlipperElement element = getRandomFlipperElement(this.flipperElementList);
         element.elementGotHit();
