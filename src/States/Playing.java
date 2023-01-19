@@ -9,8 +9,6 @@ import java.util.*;
 
 public class Playing implements State {
     private final Flipper context;
-    //@ToDo: Definition 1 Credit = 3 Kugeln
-    // das vielleicht irgendwo ausgeben?
     private Integer ballCount = 1;
     private int gameScore = 0;
 
@@ -50,9 +48,15 @@ public class Playing implements State {
                 System.out.println("Total Game Score is: >>> " + this.gameScore + " <<<");
 
                 this.shootBall();
-            } else {
+            }
+
+            /*
+            else {
                 context.setState(new Ready(context));
             }
+             */
+
+
         } else {
             System.out.println("Those were all your balls");
             System.out.println("What is your next choice?");
