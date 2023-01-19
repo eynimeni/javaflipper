@@ -79,18 +79,18 @@ public class MediatorImpl implements Mediator {
         }
         ;
         if (flipperElement instanceof Target) {
-            //targets werden eingefahren wenn sie getroffen werden. sind alle 3 eingefahren, gibt es bonus und sie fahren wieder hoch.
+            //targets werden eingefahren, wenn sie getroffen werden. sind alle 3 eingefahren, gibt es bonus und sie fahren wieder hoch.
 
             flipperElement.setElementStatus(false);
-            System.out.println(flipperElement.getId() + " wurde nach dem Treffer eingefahren.");
+            System.out.println(flipperElement.getId() + " put down after hit.");
 
             if (!this.target0.getElementStatus() && !this.target1.getElementStatus() && !this.target2.getElementStatus()) {
-                System.out.println("WOW, sie haben alle Targets getroffen und bekommen einen Extrabonus!");
+                System.out.println("WOW, you've touched all targets! EXTRA BONUS!");
                 ((Target) flipperElement).setAllTargetsTouched();
                 this.target0.setElementStatus(true);
                 this.target1.setElementStatus(true);
                 this.target2.setElementStatus(true);
-                System.out.println("Targets sind alle wieder hochgefahren!");
+                System.out.println("Targets all up again!");
             }
             redirectBall(65);
         }
