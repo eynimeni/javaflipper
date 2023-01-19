@@ -12,7 +12,6 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
     private int elementHitCount = 0;
     private Boolean elementStatus = true;
     private Boolean specialBonusPoints = false;
-    // specialBonusPoints sollte deutlich höhere Punkte bringen
 
     public Bumper(String id, Mediator mediator){
         this.id = id;
@@ -70,6 +69,10 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
     public void setSpecialBonusPoints(Boolean specialBonusPoints) {
         this.specialBonusPoints = specialBonusPoints;
     }
+    public Boolean getSpecialBonusPoints() {
+        return specialBonusPoints;
+    }
+
 
     @Override
     public void elementGotHit() {
@@ -95,4 +98,5 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
     public int acceptVisitor(Visitor visitor) {
         return visitor.visitBumper(this);
     }
+
 }

@@ -92,4 +92,12 @@ public class Target implements FlipperElement, FlipperElementWithScore {
     public int acceptVisitor(Visitor visitor) {
         return visitor.visitTarget(this);
     }
+
+    public Integer getAllTargetsTouched() {
+        return allTargetsTouched;
+    }
+
+    public void setAllTargetsTouched(Integer allTargetsTouched) {
+        this.allTargetsTouched = allTargetsTouched;
+    }
 }

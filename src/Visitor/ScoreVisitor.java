@@ -7,6 +7,14 @@ public class ScoreVisitor implements Visitor{
     @Override
     public int visitBumper(Bumper bumper) {
         int bumperScore = calculateScore(bumper);
+
+        if (bumper.getSpecialBonusPoints() != null) {
+            int bumperSpecialScore = bumperScore * 5 + 200;
+            System.out.println("And here comes your Bumper Special Score: "+ bumperSpecialScore+ " additional Points!");
+            bumperScore += bumperSpecialScore;
+            bumper.setSpecialBonusPoints(false);
+        };
+
         resetHitCount(bumper);
         return bumperScore;
     }
@@ -27,17 +35,23 @@ public class ScoreVisitor implements Visitor{
 
     @Override
     public int visitTarget(Target target) {
-        int visitTarget = calculateScore(target);
+        int targetScore = calculateScore(target);
+
+        if(target.getAllTargetsTouched() != null) {
+            int targetSpecialBonus = targetScore * target.getAllTargetsTouched() * 20;
+            System.out.println("Great, you touched all targets! You are receiving "+ targetSpecialBonus + " additional Points!");
+            targetScore += targetSpecialBonus;
+            target.setAllTargetsTouched(0);
+        }
+
         resetHitCount(target);
-        return visitTarget;
+        return targetScore;
     }
 
     @Override
     public int visitFlipperElementsComposition(FlipperElementsComposition flipperElementsComposition) {
         return calculateScore((FlipperElementWithScore) flipperElementsComposition); //@ToDo: Type-Cast aufheben, wenn FlipperElementsCompoisition auch FlipperElementWithScoreInterface implementiert. Sonst auch Anpassung notwendig!
     }
-
-    //todo komplexere logik für punkteberechnung, zb Bonuspunkte bei targets, bumper
 
     private int calculateScore(FlipperElementWithScore flipperElement){
 
