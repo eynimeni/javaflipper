@@ -50,6 +50,8 @@ public class Playing implements State {
                 System.out.println("Total Game Score is: >>> " + this.gameScore + " <<<");
 
                 this.shootBall();
+            } else {
+                context.setState(new Ready(context));
             }
         } else {
             System.out.println("Those were all your balls");
