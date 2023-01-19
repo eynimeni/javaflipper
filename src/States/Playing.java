@@ -66,7 +66,7 @@ public class Playing implements State {
 
                 //ScoreVisitor ausführen
                 this.calculatePlayScore();
-                System.out.println("Actual Game Score is: >>> " + this.gameScore + " <<<");
+                System.out.println("Total Game Score is: >>> " + this.gameScore + " <<<");
 
                 this.shootBall();
             }
@@ -78,7 +78,7 @@ public class Playing implements State {
             //@ToDo: in End-State auslagern?
             //Wenn 1 Spiel zu Ende ist, alle 3 Bälle gespielt worden sind, wird Gamescore zum Spieler gespeichert.
             context.getCurrentPlayer().getGame().setTotalScore(gameScore);
-            System.out.println("Final Game Score is >>> " + this.gameScore + " <<< (Last Game's Score: " + context.getCurrentPlayer().getGame().getLastGamesScore() + "/ Player's Total Score: " +context.getCurrentPlayer().getGame().getTotalScore());
+            System.out.println("Final Game Score is >>> " + this.gameScore + " <<< (Last Game's Score: " + context.getCurrentPlayer().getGame().getLastGamesScore() + "/ Player's Total Score: " +context.getCurrentPlayer().getGame().getTotalScore()+ ")");
             context.getCurrentPlayer().getGame().setLastGamesScore(gameScore);
 
             //todo check: endstate - hier müssten wir dann in den EndState wechseln, oder?
@@ -140,12 +140,15 @@ public class Playing implements State {
 
         ScoreVisitor visitor = new ScoreVisitor();
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
+        int newGameScore = 0;
 
         for (FlipperElement flipperElement : flipperElementList){
             if(flipperElement instanceof FlipperElementWithScore){
-                gameScore += ((FlipperElementWithScore) flipperElement).acceptVisitor(visitor);
+               newGameScore += ((FlipperElementWithScore) flipperElement).acceptVisitor(visitor);
             }
         }
+        System.out.println("With this Ball you won: "+ newGameScore+" Points!!");
+        gameScore += newGameScore;
     }
 
     //Läuft am Ende eines Spiels = nach dem 3. Ball. //@ToDo: gehört wohl in den EndState

@@ -29,6 +29,8 @@ public class ScoreVisitor implements Visitor{
         return calculateScore((FlipperElementWithScore) flipperElementsComposition); //@ToDo: Type-Cast aufheben, wenn FlipperElementsCompoisition auch FlipperElementWithScoreInterface implementiert. Sonst auch Anpassung notwendig!
     }
 
+    //todo komplexere logik für punkteberechnung, zb Bonuspunkte bei targets, bumper
+
     private int calculateScore(FlipperElementWithScore flipperElement){
 
         int score = flipperElement.getElementScore();
