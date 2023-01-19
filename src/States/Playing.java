@@ -145,7 +145,7 @@ public class Playing implements State {
             }
         }
 
-        System.out.println("Checksum from Reset ist: " +chkSum);
+       // System.out.println("Checksum from Reset ist: " +chkSum);
         if (chkSum == 26){
             System.out.println("All FlipperElements successfully reseted!");
         }
