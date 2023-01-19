@@ -6,10 +6,10 @@ import Visitor.Visitor;
 //@Kickers und Holes sind dasselbe.
 public class KickersHoles implements FlipperElement, FlipperElementWithScore {
 
-    private String id;
+    private final String id;
     private int elementScore = 0;
 
-    private Mediator mediator;
+    private final Mediator mediator;
     private int elementHitCount = 0;
     private Boolean elementStatus = true;
 
@@ -28,10 +28,6 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -83,6 +79,25 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
             System.out.println("Baaam, Kicker/Hole +20 Points!");
             this.mediator.directBall(this);
         }
+    }
+
+
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+        composition.setElementScoreValue(20);
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+
+        Integer additionalScore = this.elementScore *2;
+        composition.increaseScore(additionalScore);
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
+        composition.increaseScore(this.elementScore);
+
     }
 
     @Override

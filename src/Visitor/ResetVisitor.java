@@ -25,15 +25,12 @@ public class ResetVisitor implements Visitor{
 
     @Override
     public int visitRamp(Ramp ramp) {
-
         resetElementScoreAndHitCount(ramp);
         // 1x ramp
         return 3;
     }
-
     @Override
     public int visitTarget(Target target) {
-
         resetElementScoreAndHitCount(target);
         //3x target = 12
         return 4;
@@ -41,16 +38,13 @@ public class ResetVisitor implements Visitor{
 
     @Override
     public int visitFlipperElementsComposition(FlipperElementsComposition flipperElementsComposition) {
-
-        resetElementScoreAndHitCount((FlipperElementWithScore) flipperElementsComposition); //@ToDo: Type-Cast aufheben, wenn FlipperElementsCompoisition auch FlipperElementWithScoreInterface implementiert. Sonst auch Anpassung notwendig!
+        resetElementScoreAndHitCount(flipperElementsComposition);
         return 5;
     }
 
     private void resetElementScoreAndHitCount(FlipperElementWithScore flipperElement){
-
         flipperElement.resetElementScoreValue();
         flipperElement.resetElementHitCount();
-
     }
 
 }

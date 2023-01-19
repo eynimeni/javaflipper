@@ -5,14 +5,13 @@ import Visitor.Visitor;
 
 public class Bumper implements FlipperElement, FlipperElementWithScore {
 
-    private String id;
+    private final String id;
     private int elementScore = 0;
 
-    private Mediator mediator;
+    private final Mediator mediator;
     private int elementHitCount = 0;
     private Boolean elementStatus = true;
     private Boolean specialBonusPoints = false;
-    // specialBonusPoints sollte deutlich höhere Punkte bringen
 
     public Bumper(String id, Mediator mediator){
         this.id = id;
@@ -21,10 +20,6 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -70,6 +65,10 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
     public void setSpecialBonusPoints(Boolean specialBonusPoints) {
         this.specialBonusPoints = specialBonusPoints;
     }
+    public Boolean getSpecialBonusPoints() {
+        return specialBonusPoints;
+    }
+
 
     @Override
     public void elementGotHit() {
@@ -80,6 +79,24 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
             System.out.println("Baaam, Bumper +50 Points!");
             this.mediator.directBall(this);
         }
+    }
+
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+        composition.increaseScore(15);
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+
+        Integer additionalScore = this.elementScore *3;
+        composition.increaseScore(additionalScore);
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
+        composition.increaseScore(this.elementScore);
+
     }
 
     public void turnOnSpecialBonusPoints() {
@@ -95,4 +112,5 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
     public int acceptVisitor(Visitor visitor) {
         return visitor.visitBumper(this);
     }
+
 }

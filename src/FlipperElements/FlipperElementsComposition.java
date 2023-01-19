@@ -5,18 +5,16 @@ import Visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-//Upon receiving a request, a container delegates the work to its sub-elements, processes intermediate results and then returns the final result to the client.
-    //@ToDo: -> ich glaube daher, dass der Aufruf der Composition-Methoden zum Aufruf der Methoden der jeweiligen Elemente in der ArrayList führen muss.
-
-//@ToDo: muss wohl auch noch das Interface FlipperElementsWithScroe implementieren!
-public class FlipperElementsComposition implements FlipperElement{
-
-    private String id;
+public class FlipperElementsComposition implements FlipperElement, FlipperElementWithScore{
+    private final String id;
     private Boolean elementStatus = true;
-    private List<FlipperElement> flipperElementsList = new ArrayList<>();
+    private final List<FlipperElement> flipperElementsList = new ArrayList<>();
+    private final Mediator mediator;
+    private Integer hitCount = 0;
 
-    private Mediator mediator;
+    private Integer score = 0;
 
     public FlipperElementsComposition(String id, Mediator mediator){
 
@@ -28,26 +26,75 @@ public class FlipperElementsComposition implements FlipperElement{
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void resetHitCount() {
+        this.hitCount = 0;
     }
 
     @Override
     public void setElementStatus(Boolean elementStatus) {
-       //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
         this.elementStatus = elementStatus;
     }
 
     @Override
     public Boolean getElementStatus() {
-        //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
         return this.elementStatus;
     }
 
     @Override
     public void elementGotHit() {
-        //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
+        this.hitCount +=1;
+
+        System.out.println("You hit the Composition!");
+        executeStrike();
+
         this.mediator.directBall(this);
+    }
+
+
+
+    private void executeStrike() {
+
+        switch (this.hitCount) {
+            case 1 -> {
+                System.out.println("Lucky Strike!");
+                for (FlipperElement element : this.flipperElementsList
+                ) {
+                    element.luckyStrike(this);
+                    //System.out.println("Lucky Strike hit " + element.getId());
+                }
+                System.out.println("+ " + getElementScore() + (" Points!!"));
+            }
+            case 2 -> {
+                System.out.println("Bad Ass Strike");
+                for (int i = 0; i < 4; i++) {
+                    FlipperElement element = this.flipperElementsList.get(new Random().nextInt(this.flipperElementsList.size()));
+                    element.badAssStrike(this);
+                    //System.out.println("Bad Ass Strike hit " + element.getId());
+                }
+                System.out.println("+ " + getElementScore() + (" Points!!"));
+            }
+            default -> {
+                System.out.println("Strike Extreme!");
+                for (FlipperElement element : this.flipperElementsList
+                ) {
+                    element.strikeExtreme(this);
+                    //System.out.println("Strike Extreme hit " + element.getId());
+                }
+                System.out.println("+ " + getElementScore() + (" Points!!"));
+            }
+        }
+    }
+
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
 
     }
 
@@ -56,17 +103,46 @@ public class FlipperElementsComposition implements FlipperElement{
         this.flipperElementsList.add(flipperElement);
     }
 
-    //FlipperElement aus kombiniertem FlipperElement entfernen
-    public void remove(FlipperElement flipperElement){
-        this.flipperElementsList.remove(flipperElement);
-    }
-
     public List<FlipperElement> getFlipperElementsList(){
         return this.flipperElementsList;
     }
 
-    //@ToDo: Wenn Interface implementiert ist, dann diese Methode auch zu implementieren/aktivieren für Visitor!
-    /*public void acceptVisitor(Visitor visitor) {
-        visitor.visitFlipperElementsComposition(this);
-    }*/
+    @Override
+    public void setElementScoreValue(Integer elementScoreValue) {
+        this.score = elementScoreValue;
+    }
+
+    @Override
+    public int getElementScore() {
+        return this.score;
+    }
+
+    @Override
+    public void resetElementScoreValue() {
+        this.score = 0;
+    }
+
+    @Override
+    public void setElementHitCount(Integer elementHitCount) {
+        this.hitCount = 0;
+    }
+
+    @Override
+    public int getElementHitCount() {
+        return this.hitCount;
+    }
+
+    @Override
+    public void resetElementHitCount() {
+        this.hitCount = 0;
+
+    }
+    @Override
+    public int acceptVisitor(Visitor visitor) {
+       return visitor.visitFlipperElementsComposition(this);
+    }
+
+    public void increaseScore(Integer additionalScore) {
+        this.score += additionalScore;
+    }
 }

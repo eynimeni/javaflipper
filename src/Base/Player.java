@@ -2,8 +2,8 @@ package Base;
 
 public class Player {
 
-    private String playerName;
-    private Game game;
+    private final String playerName;
+    private final Game game;
 
     public Player(String playerName){
         this.playerName = playerName;
@@ -13,7 +13,6 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
-
     public Game getGame() {
         return game;
     }

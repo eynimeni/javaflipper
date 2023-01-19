@@ -1,7 +1,7 @@
 package States;
 
 public class NoCredit implements State {
-    private Flipper context;
+    private final Flipper context;
 
     public NoCredit(Flipper context) {
         this.context = context;

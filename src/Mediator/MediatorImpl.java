@@ -2,17 +2,14 @@ package Mediator;
 
 import FlipperElements.*;
 
-import javax.lang.model.element.Element;
 import java.util.List;
 import java.util.Random;
 import java.util.SplittableRandom;
 
 public class MediatorImpl implements Mediator {
 
-
     private Bumper bumper0;
     private Bumper bumper1;
-
     private Target target0;
     private Target target1;
     private Target target2;
@@ -44,7 +41,7 @@ public class MediatorImpl implements Mediator {
     @Override
     public void directBall(FlipperElement flipperElement) {
 
-        System.out.println("    " + flipperElement.getId() + " got hit");
+        //System.out.println("    " + flipperElement.getId() + " got hit");
 
         if (flipperElement instanceof Bumper) {
             //wenn bumper mind 3 mal getroffen werden, gibt es bonuspunkte
@@ -52,14 +49,10 @@ public class MediatorImpl implements Mediator {
                 ((Bumper) flipperElement).turnOnSpecialBonusPoints();
             }
             redirectBall(90);
-
         }
-        ;
         if (flipperElement instanceof FlipperElementsComposition) {
-            //todo hier hinein eine logik, wie die composition tut
             redirectBall(60);
         }
-        ;
         if (flipperElement instanceof KickersHoles) {
             //kicker0 lenkt fix zur rampe
             if (flipperElement.getId().equals("kicker0")) {
@@ -68,35 +61,29 @@ public class MediatorImpl implements Mediator {
                 redirectBall(80);
             }
         }
-        ;
         if (flipperElement instanceof Ramp) {
             redirectBall(97);
         }
-        ;
         if (flipperElement instanceof Slingshot) {
             this.ramp0.setElementStatus(true);
             redirectBall(80);
         }
-        ;
         if (flipperElement instanceof Target) {
-            //targets werden eingefahren wenn sie getroffen werden. sind alle 3 eingefahren, gibt es bonus und sie fahren wieder hoch.
-
+            //targets werden eingefahren, wenn sie getroffen werden. sind alle 3 eingefahren, gibt es bonus und sie fahren wieder hoch.
             flipperElement.setElementStatus(false);
-            System.out.println(flipperElement.getId() + " wurde nach dem Treffer eingefahren.");
+            System.out.println(flipperElement.getId() + " put down after hit.");
 
             if (!this.target0.getElementStatus() && !this.target1.getElementStatus() && !this.target2.getElementStatus()) {
-                System.out.println("WOW, sie haben alle Targets getroffen und bekommen einen Extrabonus!");
+                System.out.println("WOW, you've touched all targets! EXTRA BONUS!");
                 ((Target) flipperElement).setAllTargetsTouched();
                 this.target0.setElementStatus(true);
                 this.target1.setElementStatus(true);
                 this.target2.setElementStatus(true);
-                System.out.println("Targets sind alle wieder hochgefahren!");
+                System.out.println("Targets all up again!");
             }
             redirectBall(65);
         }
-        ;
     }
-
 
     public void printFallingDownMessage() {
         String fallingDownMessage = "Watch out! Ball falling down!";
@@ -107,17 +94,15 @@ public class MediatorImpl implements Mediator {
     public void redirectBall(int probabilityOfSuccessInPercent) {
 
         SplittableRandom random = new SplittableRandom();
-        Integer randomInt = random.nextInt(1, 101);
-        boolean successfullRedirection = randomInt <= probabilityOfSuccessInPercent;
+        int randomInt = random.nextInt(1, 101);
+        boolean successfulRedirection = randomInt <= probabilityOfSuccessInPercent;
 
-        if (successfullRedirection) {
+        if (successfulRedirection) {
             hitNextRandomElement();
         } else {
             printFallingDownMessage();
         }
-
     }
-
     public void hitNextRandomElement() {
         FlipperElement element = getRandomFlipperElement(this.flipperElementList);
         element.elementGotHit();

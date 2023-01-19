@@ -6,25 +6,20 @@ import Visitor.Visitor;
 public class Ramp implements FlipperElement, FlipperElementWithScore {
 
 
-    private String id;
+    private final String id;
     private int elementScore = 0;
-    private Mediator mediator;
+    private final Mediator mediator;
     private int elementHitCount = 0;
     private Boolean elementStatus = false;
 
 
     public Ramp(String id, Mediator mediator) {
-
         this.id = id;
         this.mediator = mediator;
     }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -59,8 +54,11 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
 
     @Override
     public void setElementStatus(Boolean elementStatus) {
+        if(!this.elementStatus && elementStatus) {
+            System.out.println("Ramp opened!");
+        }
         this.elementStatus = elementStatus;
-        System.out.println("Ramp open: " + this.elementStatus);
+
     }
 
     @Override
@@ -77,9 +75,27 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
             System.out.println("Baaam, Ramp +20 Points!");
             this.mediator.directBall(this);
         } else {
-            System.out.println("Ramp is closed");
+            System.out.println("Ramp is closed, ball couldn't use it.");
             this.mediator.printFallingDownMessage();
         }
+
+    }
+
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+        composition.setElementScoreValue(20);
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+
+        Integer additionalScore = this.elementScore *2;
+        composition.increaseScore(additionalScore);
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
+        composition.increaseScore(this.elementScore);
 
     }
 
