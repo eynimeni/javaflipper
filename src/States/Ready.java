@@ -1,7 +1,7 @@
 package States;
 
 public class Ready implements State {
-    private Flipper context;
+    private final Flipper context;
 
     public Ready(Flipper context) {
         System.out.println("You are now ready to play");

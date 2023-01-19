@@ -3,15 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Playing State Modifications and EndState">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementWithScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementWithScore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/FlipperElementsComposition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/Ramp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Ramp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/Slingshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Slingshot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlipperElements/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Target.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mediator/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator/Mediator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Flipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/NoCredit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/NoCredit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/Ready.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Ready.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Visitor/ResetVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visitor/ResetVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Visitor/ScoreVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Visitor/ScoreVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,15 +55,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -84,7 +94,7 @@
       <workItem from="1673810332427" duration="6470000" />
       <workItem from="1673951894273" duration="2078000" />
       <workItem from="1674125543879" duration="1591000" />
-      <workItem from="1674142257100" duration="8982000" />
+      <workItem from="1674142257100" duration="9960000" />
     </task>
     <task id="LOCAL-00001" summary="basic state pattern implemented">
       <created>1672675809765</created>

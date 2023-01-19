@@ -1,6 +1,5 @@
 package FlipperElements;
 
-
 import Mediator.Mediator;
 import Visitor.Visitor;
 
@@ -8,27 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-//Upon receiving a request, a container delegates the work to its sub-elements, processes intermediate results and then returns the final result to the client.
-    //@ToDo: -> ich glaube daher, dass der Aufruf der Composition-Methoden zum Aufruf der Methoden der jeweiligen Elemente in der ArrayList führen muss.
-
-//@ToDo: muss wohl auch noch das Interface FlipperElementsWithScroe implementieren!
-
-
-//Verwenden sie auch das Kompositum-Muster zusammen mit dem
-//Kommando-Muster, um komplexere Befehle (Makro-Befehle) zu
-//erstellen.
-//Zum Beispiel können sie ein Hole derart konfigurieren, sodass ein
-//Befehl für die Punktevergabe zuständig ist und ein weiterer Befehl den
-//Spieler bzw. die Spielerin zwischen 1, 2 und 3 wählen lässt, wobei es
-//beim Erraten Zusatzpunkte gibt.
-
-
 public class FlipperElementsComposition implements FlipperElement, FlipperElementWithScore{
-
-    private String id;
+    private final String id;
     private Boolean elementStatus = true;
-    private List<FlipperElement> flipperElementsList = new ArrayList<>();
-    private Mediator mediator;
+    private final List<FlipperElement> flipperElementsList = new ArrayList<>();
+    private final Mediator mediator;
     private Integer hitCount = 0;
 
     private Integer score = 0;
@@ -41,10 +24,6 @@ public class FlipperElementsComposition implements FlipperElement, FlipperElemen
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void resetHitCount() {
@@ -75,38 +54,34 @@ public class FlipperElementsComposition implements FlipperElement, FlipperElemen
 
     private void executeStrike() {
 
-        //sollen wir hier noch die punkte der jeweiligen elemente ausgeben in die konsole?
-        //könnte man machen über extra variable im jeweiligen element
-
         switch (this.hitCount) {
-            case 1:
+            case 1 -> {
                 System.out.println("Lucky Strike!");
                 for (FlipperElement element : this.flipperElementsList
-            ) {
-                element.luckyStrike(this);
-                    System.out.println("Lucky Strike hit "+ element.getId());
+                ) {
+                    element.luckyStrike(this);
+                    System.out.println("Lucky Strike hit " + element.getId());
+                }
+                System.out.println("+ " + getElementScore() + (" Points!!"));
             }
-                System.out.println("+ " +getElementScore()+(" Points!!"));
-                break;
-            case 2:
+            case 2 -> {
                 System.out.println("Bad Ass Strike");
-
                 for (int i = 0; i < 4; i++) {
                     FlipperElement element = this.flipperElementsList.get(new Random().nextInt(this.flipperElementsList.size()));
-                            element.badAssStrike(this);
-                            System.out.println("Bad Ass Strike hit " + element.getId());
+                    element.badAssStrike(this);
+                    System.out.println("Bad Ass Strike hit " + element.getId());
                 }
-                System.out.println("+ " +getElementScore()+(" Points!!"));
-                break;
-            default:
+                System.out.println("+ " + getElementScore() + (" Points!!"));
+            }
+            default -> {
                 System.out.println("Strike Extreme!");
                 for (FlipperElement element : this.flipperElementsList
                 ) {
                     element.strikeExtreme(this);
                     System.out.println("Strike Extreme hit " + element.getId());
                 }
-                System.out.println("+ " +getElementScore()+(" Points!!"));
-                break;
+                System.out.println("+ " + getElementScore() + (" Points!!"));
+            }
         }
     }
 
@@ -126,11 +101,6 @@ public class FlipperElementsComposition implements FlipperElement, FlipperElemen
     //FlipperElement zu kombiniertem FlipperElement hinzufügen
     public void add(FlipperElement flipperElement){
         this.flipperElementsList.add(flipperElement);
-    }
-
-    //FlipperElement aus kombiniertem FlipperElement entfernen
-    public void remove(FlipperElement flipperElement){
-        this.flipperElementsList.remove(flipperElement);
     }
 
     public List<FlipperElement> getFlipperElementsList(){

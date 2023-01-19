@@ -5,13 +5,11 @@ import Visitor.Visitor;
 
 public class Target implements FlipperElement, FlipperElementWithScore {
 
-    private String id;
+    private final String id;
     private int elementScore = 0;
-    private Mediator mediator;
+    private final Mediator mediator;
     private int elementHitCount = 0;
 
-    //todo punktevisitor: allTargetsTouched muss riesigen Bonus bringen, das ist nicht leicht zu kriegen!
-    //todo resetvisitor: muss bei neuem ball alle target elementStatus wieder auf true setzen
     private Integer allTargetsTouched = 0;
     private Boolean elementStatus = true;
 
@@ -22,10 +20,6 @@ public class Target implements FlipperElement, FlipperElementWithScore {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override
@@ -67,8 +61,6 @@ public class Target implements FlipperElement, FlipperElementWithScore {
         this.allTargetsTouched += 1;
     }
 
-    ;
-
     @Override
     public Boolean getElementStatus() {
         return this.elementStatus;
@@ -77,7 +69,6 @@ public class Target implements FlipperElement, FlipperElementWithScore {
     @Override
     public void elementGotHit() {
         if (elementStatus) {
-            //Gegen Aufruf setter ersetzt ->  this.elementHitCount += 1;
             this.setElementHitCount(1);
             this.setElementScoreValue(40);
             System.out.println("Baaam, Target +40 Points!");

@@ -32,10 +32,10 @@ public class Flipper {
     private Integer credit = 0;
     private State state;
     //States.Flipper hält in der Liste die FlipperElemente
-    private List<FlipperElement> flipperElements;
+    private final List<FlipperElement> flipperElements;
     Mediator mediator = new MediatorImpl();
     //Liste, um Player zu speichern.
-    private List<Player> players = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
     //Aktueller Spieler, muss bei Spielerwechsel geändert werden. Diese Funktion gibt es aber noch nicht @ToDo: implementieren?
     private Player currentPlayer;
 

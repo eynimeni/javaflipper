@@ -26,7 +26,7 @@ import Visitor.ScoreVisitor;
 import java.util.*;
 
 public class Playing implements State {
-    private Flipper context;
+    private final Flipper context;
     //@ToDo: Definition 1 Credit = 3 Kugeln
     // das vielleicht irgendwo ausgeben?
     private Integer ballCount = 1;

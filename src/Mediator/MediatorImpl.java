@@ -9,10 +9,8 @@ import java.util.SplittableRandom;
 
 public class MediatorImpl implements Mediator {
 
-
     private Bumper bumper0;
     private Bumper bumper1;
-
     private Target target0;
     private Target target1;
     private Target target2;
@@ -52,13 +50,10 @@ public class MediatorImpl implements Mediator {
                 ((Bumper) flipperElement).turnOnSpecialBonusPoints();
             }
             redirectBall(90);
-
         }
-        ;
         if (flipperElement instanceof FlipperElementsComposition) {
             redirectBall(60);
         }
-        ;
         if (flipperElement instanceof KickersHoles) {
             //kicker0 lenkt fix zur rampe
             if (flipperElement.getId().equals("kicker0")) {
@@ -67,19 +62,15 @@ public class MediatorImpl implements Mediator {
                 redirectBall(80);
             }
         }
-        ;
         if (flipperElement instanceof Ramp) {
             redirectBall(97);
         }
-        ;
         if (flipperElement instanceof Slingshot) {
             this.ramp0.setElementStatus(true);
             redirectBall(80);
         }
-        ;
         if (flipperElement instanceof Target) {
             //targets werden eingefahren, wenn sie getroffen werden. sind alle 3 eingefahren, gibt es bonus und sie fahren wieder hoch.
-
             flipperElement.setElementStatus(false);
             System.out.println(flipperElement.getId() + " put down after hit.");
 
@@ -93,9 +84,7 @@ public class MediatorImpl implements Mediator {
             }
             redirectBall(65);
         }
-        ;
     }
-
 
     public void printFallingDownMessage() {
         String fallingDownMessage = "Watch out! Ball falling down!";

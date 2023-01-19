@@ -42,7 +42,7 @@ public class ResetVisitor implements Visitor{
     @Override
     public int visitFlipperElementsComposition(FlipperElementsComposition flipperElementsComposition) {
 
-        resetElementScoreAndHitCount((FlipperElementWithScore) flipperElementsComposition); //@ToDo: Type-Cast aufheben, wenn FlipperElementsCompoisition auch FlipperElementWithScoreInterface implementiert. Sonst auch Anpassung notwendig!
+        resetElementScoreAndHitCount(flipperElementsComposition); //@ToDo: Type-Cast aufheben, wenn FlipperElementsCompoisition auch FlipperElementWithScoreInterface implementiert. Sonst auch Anpassung notwendig!
         return 5;
     }
 

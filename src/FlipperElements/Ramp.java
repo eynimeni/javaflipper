@@ -6,9 +6,9 @@ import Visitor.Visitor;
 public class Ramp implements FlipperElement, FlipperElementWithScore {
 
 
-    private String id;
+    private final String id;
     private int elementScore = 0;
-    private Mediator mediator;
+    private final Mediator mediator;
     private int elementHitCount = 0;
     private Boolean elementStatus = false;
 
@@ -21,10 +21,6 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @Override

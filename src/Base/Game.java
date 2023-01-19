@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Game {
 
-    private String gameId;
+    private final String gameId;
     private int totalScore;
     private int lastGamesScore;
 
@@ -13,7 +13,6 @@ public class Game {
         this.totalScore = 0;
         this.lastGamesScore = 0;
     }
-
     public Integer getTotalScore() {
         return totalScore;
     }

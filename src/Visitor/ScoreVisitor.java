@@ -13,7 +13,7 @@ public class ScoreVisitor implements Visitor{
             System.out.println("And here comes your Bumper Special Score: "+ bumperSpecialScore+ " additional Points!");
             bumperScore += bumperSpecialScore;
             bumper.setSpecialBonusPoints(false);
-        };
+        }
 
         resetHitCount(bumper);
         return bumperScore;
