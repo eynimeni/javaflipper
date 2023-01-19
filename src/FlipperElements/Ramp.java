@@ -14,7 +14,6 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
 
 
     public Ramp(String id, Mediator mediator) {
-
         this.id = id;
         this.mediator = mediator;
     }
@@ -55,8 +54,11 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
 
     @Override
     public void setElementStatus(Boolean elementStatus) {
+        if(!this.elementStatus && elementStatus) {
+            System.out.println("Ramp opened!");
+        }
         this.elementStatus = elementStatus;
-        System.out.println("Ramp open: " + this.elementStatus);
+
     }
 
     @Override
@@ -73,7 +75,7 @@ public class Ramp implements FlipperElement, FlipperElementWithScore {
             System.out.println("Baaam, Ramp +20 Points!");
             this.mediator.directBall(this);
         } else {
-            System.out.println("Ramp is closed");
+            System.out.println("Ramp is closed, ball couldn't use it.");
             this.mediator.printFallingDownMessage();
         }
 

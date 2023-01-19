@@ -31,10 +31,8 @@ public class Flipper {
 
     private Integer credit = 0;
     private State state;
-    //States.Flipper hält in der Liste die FlipperElemente
     private final List<FlipperElement> flipperElements;
     Mediator mediator = new MediatorImpl();
-    //Liste, um Player zu speichern.
     private final List<Player> players = new ArrayList<>();
     //Aktueller Spieler, muss bei Spielerwechsel geändert werden. Diese Funktion gibt es aber noch nicht @ToDo: implementieren?
     private Player currentPlayer;
@@ -42,25 +40,16 @@ public class Flipper {
 
     private Flipper() {
 
-        //FlipperStatus beim Instanzieren setzen
         setState(new NoCredit(this));
 
-        //FlipperElemente für FLipper erzeugen
         this.flipperElements = createFlipperElements();
         this.mediator.setElements(this.flipperElements);
-
-
-
-        //todo mediator die Liste übergeben! eine art getter in den mediator schreiben und hier aufrufen
-
-
     }
 
     public static Flipper getSingleFlipperInstance(){
         if (singletonFlipper == null){
             singletonFlipper = new Flipper();
         }
-
         return singletonFlipper;
     }
 
@@ -110,45 +99,35 @@ public class Flipper {
     private List<FlipperElement> createFlipperElements(){
 
         List<FlipperElement> tmpFlipperElements = new ArrayList<>();
-        System.out.println("\nLog: Erstellung FLipperElements gestartet ... FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
-
-
-        //@ToDo: man könnte hier mit einer Random-Funktion die Anzahl der zu erstellenden FlipperElemente jeweils noch freier gestalten
+        System.out.println("Creating Flipper elements.");
 
         for(int i = 0; i<2; i++){
             Bumper bumper = new Bumper("bumper"+i, this.mediator);
             tmpFlipperElements.add(bumper);
         }
-        System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<3; i++){
             Target target = new Target("target"+i, this.mediator);
             tmpFlipperElements.add(target);
         }
-        System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<2; i++){
             KickersHoles kickersHoles = new KickersHoles("kicker"+i, this.mediator);
             tmpFlipperElements.add(kickersHoles);
         }
-        System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<1; i++){
             Ramp ramp = new Ramp("ramp"+i, this.mediator);
             tmpFlipperElements.add(ramp);
         }
-        System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         for(int i = 0; i<2; i++){
             Slingshot slingshot = new Slingshot("slingshot"+i, this.mediator);
             tmpFlipperElements.add(slingshot);
         }
-        System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
         tmpFlipperElements.add(createFlipperElementsComposition());
-        System.out.println("Log: FlipperElement-Liste enthält aktuell \"" +tmpFlipperElements.size()+ "\".");
 
-        System.out.println("Log: FlipperElement-Liste enthält aktuell:");
         for (FlipperElement flipperElement : tmpFlipperElements) {
             System.out.println(" - FlipperElement ID: " + flipperElement.getId());
 
@@ -161,7 +140,8 @@ public class Flipper {
 
         }
 
-        System.out.println("Log: ... Erstellung FLipperElements beendet!\n");
+        System.out.println("Building Flipper Elements completed!\nFlipperElement-List contains \"" +tmpFlipperElements.size()+"\" elements." );
+        System.out.println("What a magnificent Flipper!\n");
 
         return  tmpFlipperElements;
 
@@ -182,12 +162,9 @@ public class Flipper {
             Slingshot slingshot = new Slingshot("compSlingshot"+i, this.mediator);
             flipperElementsComposition.add(slingshot);
         }
-
         return flipperElementsComposition;
     }
 
-
-    //Getter Methode um Liste zu übergeben an Playing State
     public List<FlipperElement> getFlipperElementsList() {
        return this.flipperElements;
     }
@@ -206,13 +183,11 @@ public class Flipper {
 
         Player player = new Player(playerName);
         return player;
-
     }
 
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
-
 
 }
 

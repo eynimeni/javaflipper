@@ -1,23 +1,5 @@
 package States;
 
-/*
-@ToDo: Arbeitskommentare:
-    Hier passiert am meisten Logik, würd ich meinen, oder "Concrete States provide their own implementations for the state-specific methods."?
-    Methoden für:
-    - Wenn man von Ready in den Playing Status gelangt, autom. Laden der 1. Kugel.
-    //-> ja genau, aber jeden Ball Abschuss muss man halt noch mal "händisch" machen, also bestätigen. dafür gibt es doch nochmal einen extra knopf, drum hab ich das so geschrieben
-    - Credit wird durch Statuswechsel zu Playing um 1 verringert.
-    //-> das ist eh schon
-    - Kugel abschießen, so lange es Kugeln gibt möglich
-    //-> ja genau, also 3 mal pro Münze
-    - Nach Abschießen der Kugel, durchläuft diese das Spielfeld und trifft die unterschiedlichen States.Flipper-Elemente (Bumper, Slingshot ...)
-        * Hierzu soll dann die Spiellogik implementiert werden, die das Zusammenspiel und die entstehenden Punkte steuert und ermittelt -> Mediator- /Visitor-Pattern?
-        * Betätigen der Flipperhebel in Spiellogik auch "random" simulieren. Oder den User per Eingabe dazu auffordern?
-        // da bin ich mir auch nicht sicher!!
-    - Kugel rollt ins "Aus" -> Kugelanzahl prüfen. Wenn Kugelanzahl > 0, dann wieder autom. nächste Kugel laden.
-        * Wenn "3. Kugel ins Aus gelangt" -> Wechsel in EndState
- */
-
 import FlipperElements.FlipperElement;
 import FlipperElements.FlipperElementWithScore;
 import Visitor.ResetVisitor;
@@ -34,7 +16,8 @@ public class Playing implements State {
 
     public Playing(Flipper context) {
         this.context = context;
-        System.out.println("States.Playing!");
+        System.out.println("Playing!");
+        System.out.println("You have 3 Balls");
 
         //hier vielleicht eine Base.Game Class die Punkte speichert (und mit Spiel verbunden ist)
         //Das Spiel gehört ja immer zu einem Spieler und der Spieler ist im Flipper (context) geführt. Man kann also über den Spieler zum Game Punkte speichern. Aber schauen wir mal, ob das nicht der Visitor erledigt :-)
@@ -60,11 +43,9 @@ public class Playing implements State {
             String shooting = scanner.next();
 
             if (Objects.equals(shooting, "Y")) {
-                System.out.println("Ball Number: " + this.ballCount + "/3");
+                System.out.println("  Ball Number: " + this.ballCount + "/3");
                 this.ballCount++;
                 this.playBall();
-
-                //ScoreVisitor ausführen
                 this.calculatePlayScore();
                 System.out.println("Total Game Score is: >>> " + this.gameScore + " <<<");
 
@@ -74,7 +55,6 @@ public class Playing implements State {
             System.out.println("Those were all your balls");
             System.out.println("What is your next choice?");
 
-            //todo hier punkte highscore zeug -> done
             //@ToDo: in End-State auslagern?
             //Wenn 1 Spiel zu Ende ist, alle 3 Bälle gespielt worden sind, wird Gamescore zum Spieler gespeichert.
             context.getCurrentPlayer().getGame().setTotalScore(gameScore);
@@ -98,16 +78,16 @@ public class Playing implements State {
 
     @Override
     public void playButtonPressed() {
-        System.out.println("States.Playing States.State - Authors of the Software are Tom and Magdalena");
-        changeState();
+        System.out.println("Authors of the Software are Tom and Magdalena");
+        //changeState();
     }
 
     @Override
     public void insertCoin() {
 
         //@ToDo: warum ändert sich hier der Status? Münzeinwurf verschafft ja nur mehr Credit. Play-State -> EndState nur wenn 3. Ball verloren gegangen ist, oder?
+        //diese Möglichkeit hat man eh nur, wenn die 3 Bälle vorbei sind. Credit wird sowieso "automatisch" also über den Flipper aufgebucht.
         context.setState(new Ready(context));
-        //changeState();
 
         //@ToDo: Credit-Implementierung aufnehmen?
         // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
@@ -116,18 +96,18 @@ public class Playing implements State {
     private void playBall() {
         List<FlipperElement> flipperElementList = this.context.getFlipperElementsList();
 
-        //Random FlipperElement gets hit
+        //The first Random FlipperElement gets hit
         getRandomFlipperElement(flipperElementList).elementGotHit();
 
-        System.out.println("Pinball lever trying to catch that ball!");
+        System.out.println("    Pinball lever trying to catch that ball!");
 
             SplittableRandom random = new SplittableRandom();
             boolean success = random.nextInt(1,101) <= 50;
             if(success) {
-                System.out.println("OH YES! Caught it!");
+                System.out.println("    OH YES! Caught it!");
                 playBall();
             } else {
-                System.out.println("DAMM! LOST IT!");
+                System.out.println("    DAMM! LOST IT!");
             }
         }
 
@@ -166,8 +146,7 @@ public class Playing implements State {
         }
 
         System.out.println("Checksum from Reset ist: " +chkSum);
-        //@ToDo: mit FLipperElementsComposition ist chkSum nach Reset ?? Anpassung dann notwendig!
-        if (chkSum == 21){
+        if (chkSum == 26){
             System.out.println("All FlipperElements successfully reseted!");
         }
         else {

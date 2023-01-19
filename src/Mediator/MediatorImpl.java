@@ -2,7 +2,6 @@ package Mediator;
 
 import FlipperElements.*;
 
-import javax.lang.model.element.Element;
 import java.util.List;
 import java.util.Random;
 import java.util.SplittableRandom;
@@ -95,7 +94,7 @@ public class MediatorImpl implements Mediator {
     public void redirectBall(int probabilityOfSuccessInPercent) {
 
         SplittableRandom random = new SplittableRandom();
-        Integer randomInt = random.nextInt(1, 101);
+        int randomInt = random.nextInt(1, 101);
         boolean successfulRedirection = randomInt <= probabilityOfSuccessInPercent;
 
         if (successfulRedirection) {

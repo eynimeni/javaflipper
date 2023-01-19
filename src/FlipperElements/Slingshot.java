@@ -29,6 +29,7 @@ public class Slingshot implements FlipperElement {
 
     @Override
     public void elementGotHit() {
+        System.out.println("You hit a Slingshot!!");
         if(elementStatus) {
             this.mediator.directBall(this);
         }

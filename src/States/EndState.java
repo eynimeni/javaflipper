@@ -7,6 +7,8 @@ package States;
     - Dann wird der Spielscore angezeigt. Diesen sollten wir dann zum Spieler auch sichern.
     - Mit einer "Eingabe (Enter?)" gelangt man danach entweder in den Ready State, wenn noch Credit vorhanden ist oder in den NoCredit State.
     - Spiel beenden, obwohl man Credit hat, gibt es ja eig. bei einem States.Flipper nicht. Man bekommt ja sein Geld nicht zurück. Macht es vllt. auch für unser Übungsbeispiel einfacher?
+
+    todo -> mMn muss man das beenden nicht umbauen, wie gesagt, ich würde keinen extra endstate mehr machen, sondern alles als ende von playing
  */
 
 

@@ -14,11 +14,9 @@ public class ScoreVisitor implements Visitor{
             bumperScore += bumperSpecialScore;
             bumper.setSpecialBonusPoints(false);
         }
-
         resetHitCount(bumper);
         return bumperScore;
     }
-
     @Override
     public int visitKickersHoles(KickersHoles kickersHoles) {
         int kickersHolesScore = calculateScore(kickersHoles);
@@ -39,7 +37,7 @@ public class ScoreVisitor implements Visitor{
 
         if(target.getAllTargetsTouched() > 0) {
             int targetSpecialBonus = targetScore * target.getAllTargetsTouched() * 20;
-            System.out.println("Great, you touched all targets! You are receiving "+ targetSpecialBonus + " additional Points!");
+            System.out.println("Since you touched all targets...  "+ targetSpecialBonus + " additional Points!");
             targetScore += targetSpecialBonus;
             target.setAllTargetsTouched(0);
         }
