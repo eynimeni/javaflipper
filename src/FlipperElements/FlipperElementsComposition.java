@@ -57,7 +57,24 @@ public class FlipperElementsComposition implements FlipperElement{
 
     @Override
     public void elementGotHit() {
-        //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
+        //@ToDo: anpassen wenn Logik der einzelnen Komponenten implementiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
+
+        //hier hinein vielleicht ein command pattern probieren!
+        //aber die elemente können ja nicht alle das selbe erben...
+        // natürlich kann man auch einfach hier eine punkte- und durchlauflogik machen.
+        // einzelne elemente werden getroffen.
+        // aber es wäre eine gute gelegenheit, das command zu probieren.
+        // It’s enough to put a single field into the base Button class that stores a reference to a command object and make the button execute that command on a click.
+
+        //CompositumCommand command = new CompositumCommand()
+        //methode in interface FlipperElement compositumCommandGetHit
+        //klasse: getHit dorthin compositum übergeben, einzelne elemente anlegen (for each)
+        //dann die logik überlegen: wenn gotHit (welches Element? oder das wievielte Mal das ganze Kompositum?) -> was passier dann?
+        //erstmal ganze logik schreiben und dann fallspielerein
+        //auch einbauen: raten welche zahl -> gewinn von extra punkten
+
+
+
         this.mediator.directBall(this);
 
     }
