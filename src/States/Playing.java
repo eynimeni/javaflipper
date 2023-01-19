@@ -88,6 +88,7 @@ public class Playing implements State {
 
         if(context.getCredit() > 0) {
             context.decreaseCredit();
+            this.ballCount = 1;
             this.shootBall();
         } else {
             System.out.println("You have no more credit left.");
