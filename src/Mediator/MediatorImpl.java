@@ -108,15 +108,16 @@ public class MediatorImpl implements Mediator {
 
         SplittableRandom random = new SplittableRandom();
         Integer randomInt = random.nextInt(1, 101);
-        boolean successfullRedirection = randomInt <= probabilityOfSuccessInPercent;
+        boolean successfulRedirection = randomInt <= probabilityOfSuccessInPercent;
 
-        if (successfullRedirection) {
+        if (successfulRedirection) {
             hitNextRandomElement();
         } else {
             printFallingDownMessage();
         }
 
     }
+
 
     public void hitNextRandomElement() {
         FlipperElement element = getRandomFlipperElement(this.flipperElementList);

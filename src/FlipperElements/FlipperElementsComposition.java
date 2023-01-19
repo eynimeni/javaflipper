@@ -10,6 +10,17 @@ import java.util.List;
     //@ToDo: -> ich glaube daher, dass der Aufruf der Composition-Methoden zum Aufruf der Methoden der jeweiligen Elemente in der ArrayList führen muss.
 
 //@ToDo: muss wohl auch noch das Interface FlipperElementsWithScroe implementieren!
+
+
+//Verwenden sie auch das Kompositum-Muster zusammen mit dem
+//Kommando-Muster, um komplexere Befehle (Makro-Befehle) zu
+//erstellen.
+//Zum Beispiel können sie ein Hole derart konfigurieren, sodass ein
+//Befehl für die Punktevergabe zuständig ist und ein weiterer Befehl den
+//Spieler bzw. die Spielerin zwischen 1, 2 und 3 wählen lässt, wobei es
+//beim Erraten Zusatzpunkte gibt.
+
+
 public class FlipperElementsComposition implements FlipperElement{
 
     private String id;
