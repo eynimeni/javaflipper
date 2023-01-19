@@ -16,6 +16,7 @@ public class Playing implements State {
 
     public Playing(Flipper context) {
         this.context = context;
+
         System.out.println("Playing!");
         System.out.println("You have 3 Balls");
 
@@ -29,7 +30,6 @@ public class Playing implements State {
         // nur wenn es von context aufgerufen wird greift es, also in playButtonPressed oder CoinInsert
         //oder vom ready state als ablauf nach dem playing (ist aber auch keine gute lösung)
         //deswegen behelfsmäßig mal bei den button-press-funktionen
-
 
         // aus der angabe: zu jeden zeitpunkt möglich, knopf zu drücken... ??? interrupt??
 
@@ -74,13 +74,27 @@ public class Playing implements State {
     //@ToDo: sowohl States.Flipper (Context) als auch Statusklassen, sollen Statuswechsel durchführen können: "Both context and concrete states can set the next state of the context and perform the actual state transition by replacing the state object linked to the context.".
     //-> meiner Meinung nach, haben wir das eh so!
 
-    public void changeState() {
+    public void changeStateToEndState() {
         context.setState(new EndState(context));
     }
 
     @Override
     public void playButtonPressed() {
-        System.out.println("Authors of the Software are Tom and Magdalena");
+        System.out.println("Authors of the Software are Tom and Magdalena.");
+
+        if(context.getCredit() > 0) {
+            System.out.println("Do you want to play again? Y/N");
+            Scanner scanner = new Scanner(System.in);
+            String playing = scanner.next();
+
+            if (Objects.equals(playing, "Y")) {
+                this.shootBall();
+            }
+        } else {
+            System.out.println("You have no more credit left.");
+            //go to nocredit?
+        }
+
         //changeState();
     }
 
