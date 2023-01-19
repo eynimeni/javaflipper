@@ -47,4 +47,19 @@ public class Slingshot implements FlipperElement {
         }
 
     }
+
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+        composition.increaseScore(10);
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
+        composition.increaseScore(20);
+
+    }
 }

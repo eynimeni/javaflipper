@@ -115,9 +115,7 @@ public class MediatorImpl implements Mediator {
         } else {
             printFallingDownMessage();
         }
-
     }
-
 
     public void hitNextRandomElement() {
         FlipperElement element = getRandomFlipperElement(this.flipperElementList);

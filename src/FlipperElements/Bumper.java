@@ -85,6 +85,24 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
         }
     }
 
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+        composition.increaseScore(15);
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+
+        Integer additionalScore = this.elementScore *3;
+        composition.increaseScore(additionalScore);
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
+        composition.increaseScore(this.elementScore);
+
+    }
+
     public void turnOnSpecialBonusPoints() {
         if (specialBonusPoints = false) {
             //Gegen Aufruf setter ersetzt -> this.specialBonusPoints = true;

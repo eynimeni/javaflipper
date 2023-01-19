@@ -1,10 +1,12 @@
 package FlipperElements;
 
+
 import Mediator.Mediator;
 import Visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 //Upon receiving a request, a container delegates the work to its sub-elements, processes intermediate results and then returns the final result to the client.
     //@ToDo: -> ich glaube daher, dass der Aufruf der Composition-Methoden zum Aufruf der Methoden der jeweiligen Elemente in der ArrayList führen muss.
@@ -21,13 +23,15 @@ import java.util.List;
 //beim Erraten Zusatzpunkte gibt.
 
 
-public class FlipperElementsComposition implements FlipperElement{
+public class FlipperElementsComposition implements FlipperElement, FlipperElementWithScore{
 
     private String id;
     private Boolean elementStatus = true;
     private List<FlipperElement> flipperElementsList = new ArrayList<>();
-
     private Mediator mediator;
+    private Integer hitCount = 0;
+
+    private Integer score = 0;
 
     public FlipperElementsComposition(String id, Mediator mediator){
 
@@ -43,39 +47,79 @@ public class FlipperElementsComposition implements FlipperElement{
         this.id = id;
     }
 
+    public void resetHitCount() {
+        this.hitCount = 0;
+    }
+
     @Override
     public void setElementStatus(Boolean elementStatus) {
-       //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
         this.elementStatus = elementStatus;
     }
 
     @Override
     public Boolean getElementStatus() {
-        //@ToDo: anpassen wenn Logik der einzelnen Komponenten implenentiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
         return this.elementStatus;
     }
 
     @Override
     public void elementGotHit() {
-        //@ToDo: anpassen wenn Logik der einzelnen Komponenten implementiert ist. Composition muss Methoden der Kindelemente durchlaufen und aggregiert deren Aktionen/Ergebnisse
+        this.hitCount +=1;
 
-        //hier hinein vielleicht ein command pattern probieren!
-        //aber die elemente können ja nicht alle das selbe erben...
-        // natürlich kann man auch einfach hier eine punkte- und durchlauflogik machen.
-        // einzelne elemente werden getroffen.
-        // aber es wäre eine gute gelegenheit, das command zu probieren.
-        // It’s enough to put a single field into the base Button class that stores a reference to a command object and make the button execute that command on a click.
-
-        //CompositumCommand command = new CompositumCommand()
-        //methode in interface FlipperElement compositumCommandGetHit
-        //klasse: getHit dorthin compositum übergeben, einzelne elemente anlegen (for each)
-        //dann die logik überlegen: wenn gotHit (welches Element? oder das wievielte Mal das ganze Kompositum?) -> was passier dann?
-        //erstmal ganze logik schreiben und dann fallspielerein
-        //auch einbauen: raten welche zahl -> gewinn von extra punkten
-
-
+        System.out.println("You hit the Composition!");
+        executeStrike();
 
         this.mediator.directBall(this);
+    }
+
+
+
+    private void executeStrike() {
+
+        //sollen wir hier noch die punkte der jeweiligen elemente ausgeben in die konsole?
+        //könnte man machen über extra variable im jeweiligen element
+
+        switch (this.hitCount) {
+            case 1:
+                System.out.println("Lucky Strike!");
+                for (FlipperElement element : this.flipperElementsList
+            ) {
+                element.luckyStrike(this);
+                    System.out.println("Lucky Strike hit "+ element.getId());
+            }
+                System.out.println("+ " +getElementScore()+(" Points!!"));
+                break;
+            case 2:
+                System.out.println("Bad Ass Strike");
+
+                for (int i = 0; i < 4; i++) {
+                    FlipperElement element = this.flipperElementsList.get(new Random().nextInt(this.flipperElementsList.size()));
+                            element.badAssStrike(this);
+                            System.out.println("Bad Ass Strike hit " + element.getId());
+                }
+                System.out.println("+ " +getElementScore()+(" Points!!"));
+                break;
+            default:
+                System.out.println("Strike Extreme!");
+                for (FlipperElement element : this.flipperElementsList
+                ) {
+                    element.strikeExtreme(this);
+                    System.out.println("Strike Extreme hit " + element.getId());
+                }
+                System.out.println("+ " +getElementScore()+(" Points!!"));
+                break;
+        }
+    }
+
+    @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
 
     }
 
@@ -93,8 +137,44 @@ public class FlipperElementsComposition implements FlipperElement{
         return this.flipperElementsList;
     }
 
-    //@ToDo: Wenn Interface implementiert ist, dann diese Methode auch zu implementieren/aktivieren für Visitor!
-    /*public void acceptVisitor(Visitor visitor) {
-        visitor.visitFlipperElementsComposition(this);
-    }*/
+    @Override
+    public void setElementScoreValue(Integer elementScoreValue) {
+        this.score = elementScoreValue;
+    }
+
+    @Override
+    public int getElementScore() {
+        return this.score;
+    }
+
+    @Override
+    public void resetElementScoreValue() {
+        this.score = 0;
+    }
+
+    @Override
+    public void setElementHitCount(Integer elementHitCount) {
+        this.hitCount = 0;
+    }
+
+    @Override
+    public int getElementHitCount() {
+        return this.hitCount;
+    }
+
+    @Override
+    public void resetElementHitCount() {
+        this.hitCount = 0;
+
+    }
+    @Override
+    public int acceptVisitor(Visitor visitor) {
+       return visitor.visitFlipperElementsComposition(this);
+    }
+
+    public void increaseScore(Integer additionalScore) {
+        this.score += additionalScore;
+    }
+
+
 }

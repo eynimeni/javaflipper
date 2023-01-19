@@ -14,6 +14,7 @@ package States;/*
 //TODO aufpassen, dass diese Klasse nicht zu überladen wird - evt. etwas kapseln in neuer Klasse
 
 import Base.Player;
+
 import FlipperElements.*;
 import Mediator.Mediator;
 import Mediator.MediatorImpl;
@@ -211,5 +212,8 @@ public class Flipper {
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
+
+
 }
+
 

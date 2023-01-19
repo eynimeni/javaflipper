@@ -89,6 +89,24 @@ public class Target implements FlipperElement, FlipperElementWithScore {
     }
 
     @Override
+    public void luckyStrike(FlipperElementsComposition composition) {
+        composition.increaseScore(20);
+    }
+
+    @Override
+    public void badAssStrike(FlipperElementsComposition composition) {
+
+        Integer additionalScore = this.elementScore *2;
+        composition.increaseScore(additionalScore);
+    }
+
+    @Override
+    public void strikeExtreme(FlipperElementsComposition composition) {
+        composition.increaseScore(this.elementScore);
+
+    }
+
+    @Override
     public int acceptVisitor(Visitor visitor) {
         return visitor.visitTarget(this);
     }
