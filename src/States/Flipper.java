@@ -55,7 +55,7 @@ public class Flipper {
 
     public void insertCoin() {
         addCredit();
-        state.insertCoin();
+        //braucht es eig. nicht an dieser Stelle -> state.insertCoin();
     }
 
     public void pressPlayButton() {
@@ -128,7 +128,8 @@ public class Flipper {
 
         tmpFlipperElements.add(createFlipperElementsComposition());
 
-        for (FlipperElement flipperElement : tmpFlipperElements) {
+        //Logoutpout for FlipperElementcreation to be prooved.
+        /*for (FlipperElement flipperElement : tmpFlipperElements) {
             System.out.println(" - FlipperElement ID: " + flipperElement.getId());
 
             if (flipperElement instanceof FlipperElementsComposition) {
@@ -138,7 +139,7 @@ public class Flipper {
                 }
             }
 
-        }
+        }*/
 
         System.out.println("Building Flipper Elements completed!\nFlipperElement-List contains \"" +tmpFlipperElements.size()+"\" elements." );
         System.out.println("What a magnificent Flipper!\n");

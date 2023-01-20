@@ -12,7 +12,8 @@ public class Ready implements State {
     public void playButtonPressed() {
         System.out.println("States.Ready, steady ....");
         context.decreaseCredit();
-        context.setState(new Playing(context));
+        context.setState(new Playing(this.context));
+        ((Playing)context.getState()).shootBall();
         //context.setState(new States.EndState(context));
     }
 
