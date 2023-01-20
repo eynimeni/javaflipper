@@ -1,19 +1,25 @@
 package AbstractFactory;
 
-public interface AbstractFactory {
+public interface AbstractFactory <T>{
 
+    T createMessage(String messageType);
+
+    //1. Versuch
     //DisplayText createDisplayText();
 
-    DisplayText createWelcomeMessage();
+    //AbstractFactory Implementierung 1. Ansatz
+        /*
+        DisplayText createWelcomeMessage();
 
-    DisplayText createEnterPlayerName();
+        DisplayText createEnterPlayerName();
 
-    DisplayText createChooseOption();
+        DisplayText createChooseOption();
 
-    DisplayText createQuitText();
+        DisplayText createQuitText();
 
-    DisplayText createCreditLost();
+        DisplayText createCreditLost();
 
-    DisplayText createGoodBye();
+        DisplayText createGoodBye();
+        */
 
 }
