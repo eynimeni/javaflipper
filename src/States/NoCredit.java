@@ -16,7 +16,7 @@ public class NoCredit implements State {
     public void insertCoin() {
 
         //Wechsel in den Ready-State ab der 1. Münze.
-        context.setState(new Ready(context));
+        context.setState(new Ready(this.context));
 
         //@ToDo: Credit-Implementierung aufnehmen?
         //-> Credit wird in der Flipper Klasse getrackt

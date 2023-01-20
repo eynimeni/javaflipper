@@ -1,4 +1,5 @@
 import AbstractFactory.*;
+import States.EndState;
 import States.Flipper;
 
 import java.util.Objects;
@@ -38,9 +39,14 @@ public class Main {
         input = inputScanner();
         context.addPlayer(input);
 
+        //&& !context.getState().equals(EndState.class)
         while (playing) {
             //System.out.println("\n*******");
+
+            System.out.print("CHECK --> State is: " +context.getState());
+  
             displayText = factory.createMessage("options");
+
             displayText.createText();
             //System.out.println("Please \"" + context.getCurrentPlayer().getPlayerName() + "\" choose your option! \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Base.Game");
             input = inputScanner();

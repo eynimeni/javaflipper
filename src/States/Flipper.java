@@ -55,7 +55,7 @@ public class Flipper {
 
     public void insertCoin() {
         addCredit();
-        state.insertCoin();
+        //braucht es eig. nicht an dieser Stelle -> state.insertCoin();
     }
 
     public void pressPlayButton() {
@@ -128,7 +128,8 @@ public class Flipper {
 
         tmpFlipperElements.add(createFlipperElementsComposition());
 
-        //Uncommented Log-Text
+
+        //Logoutpout for FlipperElementcreation to be prooved.
         /*for (FlipperElement flipperElement : tmpFlipperElements) {
             System.out.println(" - FlipperElement ID: " + flipperElement.getId());
 
