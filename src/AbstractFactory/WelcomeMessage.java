@@ -25,7 +25,8 @@ public class WelcomeMessage implements DisplayText {
                                                                                                                                  \s
                 """;
 
-        System.out.println("\n" +text); //"Welcome to our States Flipper";
+        System.out.println("\n" + text); //"Welcome to our States Flipper";
 
     }
+
 }
