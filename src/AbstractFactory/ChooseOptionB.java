@@ -26,7 +26,7 @@ public class ChooseOptionB implements DisplayText {
                 """;
 
         //System.out.println(textVar3 + "\n " + play + "\n " + addCredit + "\n " + displayCredit + "\n " + endGame);
-        System.out.print(text+ " 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Game \n\n (enter here): ");
+        System.out.print(text+ " \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Game \n\n (enter here): ");
     }
 
 }

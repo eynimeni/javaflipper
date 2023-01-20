@@ -43,7 +43,7 @@ public class Main {
         while (playing) {
             //System.out.println("\n*******");
 
-            System.out.print("CHECK --> State is: " +context.getState());
+            System.out.println("CHECK --> State is: " +context.getState());
   
             displayText = factory.createMessage("options");
 
