@@ -128,6 +128,7 @@ public class Flipper {
 
         tmpFlipperElements.add(createFlipperElementsComposition());
 
+
         //Logoutpout for FlipperElementcreation to be prooved.
         /*for (FlipperElement flipperElement : tmpFlipperElements) {
             System.out.println(" - FlipperElement ID: " + flipperElement.getId());

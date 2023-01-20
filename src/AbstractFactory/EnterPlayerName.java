@@ -23,7 +23,7 @@ public class EnterPlayerName implements DisplayText {
                                                                                        /____/                                  /____/                                      \s
                 """;
 
-        System.out.print(textVar2+"\n(enter here): ");
+        System.out.print(textVar2 + "\n(enter here): ");
 
     }
 
