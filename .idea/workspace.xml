@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Abstract Factory implemented! Works on Main().">
+    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Just little improvements!">
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/CoinDrop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/CoinDropB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/ChooseOptionB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/ChooseOptionB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/ChooseOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/ChooseOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/EnterPlayerName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/EnterPlayerName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/WelcomeMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/WelcomeMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mediator/Mediator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator/Mediator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Flipper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +70,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -97,6 +109,7 @@
       <workItem from="1673810332427" duration="6470000" />
       <workItem from="1673951894273" duration="2078000" />
       <workItem from="1674151910651" duration="7169000" />
+      <workItem from="1674287773273" duration="7244000" />
     </task>
     <task id="LOCAL-00001" summary="basic state pattern implemented">
       <created>1672675809765</created>
@@ -140,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673986163202</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Just little improvements!">
+      <created>1674249973500</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674249973500</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,15 +185,16 @@
     <MESSAGE value="double check in case of &quot;end game&quot; added" />
     <MESSAGE value="Playing State Modifications and EndState" />
     <MESSAGE value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
+    <MESSAGE value="Just little improvements!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Just little improvements!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/States/Flipper.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

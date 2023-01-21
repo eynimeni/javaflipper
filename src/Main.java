@@ -1,5 +1,4 @@
 import AbstractFactory.*;
-import States.EndState;
 import States.Flipper;
 
 import java.util.Objects;
@@ -9,70 +8,89 @@ public class Main {
     public static void main(String[] args) {
 
         boolean playing = true;
-        String input;
-        AbstractFactory<DisplayText> factory;
+        String input = "";
+        //in Flipper verschoben -> AbstractFactory<DisplayText> factory = null;
+        DisplayText displayText;
+        Flipper flipper = Flipper.getSingleFlipperInstance();
 
-        System.out.print("Please choose Theme \"A\" or \"B\" for textual outputs: ");
-        input = inputScanner();
+        delayGame();
 
-        if(input.equalsIgnoreCase("A")){
-            factory = new DisplayTextFactoryVariantA();
-        }
-        else if(input.equalsIgnoreCase("B")){
-            factory = new DisplayTextFactoryVariantB();
-        }
-        else{
-            System.out.print("Choosing went wrong, using default theme!");
-            factory = new DisplayTextFactoryVariantA();
+        while (!input.equals("A") && !input.equals("B")) {
+            System.out.print("\n>>> Please choose a Theme: \n" +
+                    """
+                              ________                           ___\s
+                             /_  __/ /_  ___  ____ ___  ___     /   |
+                              / / / __ \\/ _ \\/ __ `__ \\/ _ \\   / /| |
+                             / / / / / /  __/ / / / / /  __/  / ___ |
+                            /_/ /_/ /_/\\___/_/ /_/ /_/\\___/  /_/  |_|
+                                                                    \s
+                            """ +
+                    "or\n" +
+                    """
+                             ______  __ __    ___  ___ ___    ___      ____ \s
+                            |      ||  |  |  /  _]|   |   |  /  _]    |    \\\s
+                            |      ||  |  | /  [_ | _   _ | /  [_     |  o  )
+                            |_|  |_||  _  ||    _]|  \\_/  ||    _]    |     |
+                              |  |  |  |  ||   [_ |   |   ||   [_     |  O  |
+                              |  |  |  |  ||     ||   |   ||     |    |     |
+                              |__|  |__|__||_____||___|___||_____|    |_____|
+                                                                            \s
+                            """ +
+                    "(enter A/B here): "
+            );
+            input = inputScanner();
+            flipper.createDisplayTextFactory(input);
+
+            //in Flipper verschoben ->
+            /*if(input.equalsIgnoreCase("A")){
+                factory = new DisplayTextFactoryVariantA();
+            }
+            else if(input.equalsIgnoreCase("B")){
+                factory = new DisplayTextFactoryVariantB();
+            }*/
         }
 
-        DisplayText displayText = factory.createMessage("welcome");
+        displayText = flipper.getDisplayTextFactory().createMessage("welcome");
         displayText.createText();
-        //System.out.println("\n>>Welcome to our States.Flipper!<<");
+        delayGame();
 
-        //@ToDo: final context zu flipper refactorn ;-)
-        Flipper context = Flipper.getSingleFlipperInstance();
-
-        displayText = factory.createMessage("playername");
+        displayText = flipper.getDisplayTextFactory().createMessage("playername");
         displayText.createText();
-        //System.out.print("Please choose your Playername: ");
         input = inputScanner();
-        context.addPlayer(input);
+        flipper.addPlayer(input);
+        System.out.println(">>> Welcome \"" + flipper.getCurrentPlayer().getPlayerName() + "\"!");
+        delayGame();
 
-        //&& !context.getState().equals(EndState.class)
+
         while (playing) {
-            //System.out.println("\n*******");
 
-            System.out.println("CHECK --> State is: " +context.getState());
-  
-            displayText = factory.createMessage("options");
+            //@ToDo: final noch auskommentieren!
+            System.out.println("\n **** CHECK --> State is: " + flipper.getState() + " ***");
 
+            displayText = flipper.getDisplayTextFactory().createMessage("options");
             displayText.createText();
-            //System.out.println("Please \"" + context.getCurrentPlayer().getPlayerName() + "\" choose your option! \n 1: Play \n 2: Add Credit \n 3: Display Credit \n 4: End Base.Game");
             input = inputScanner();
 
             switch (input) {
-                case ("1") -> context.pressPlayButton();
-                case ("2") -> context.insertCoin();
-                case ("3") -> context.displayCredit();
+                case ("1") -> flipper.pressPlayButton();
+                case ("2") -> flipper.insertCoin();
+                case ("3") -> flipper.displayCredit();
                 case ("4") -> {
-                    displayText = factory.createMessage("quit");
+                    displayText = flipper.getDisplayTextFactory().createMessage("quit");
                     displayText.createText();
-                    //System.out.println("Are you sure you want to quit? Y/N");
 
-                    if(context.getCredit() > 0 ){
-                        /*displayText = factory.createCreditLost();
+                    if (flipper.getCredit() > 0) {
+                        /*@ToDo: use or no use -> displayText = factory.createCreditLost();
                         displayText.createText();*/
-                        System.out.println("Your Credit of "+context.getCredit() +" will be lost.");
-                        }
+                        System.out.println("Your Credit of " + flipper.getCredit() + " will be lost.");
+                    }
 
                     System.out.print("\n(enter Y/N here): ");
                     Scanner scanner1 = new Scanner(System.in);
 
                     if (Objects.equals(scanner1.next(), "Y")) {
-                        displayText = factory.createMessage("bye");
+                        displayText = flipper.getDisplayTextFactory().createMessage("bye");
                         displayText.createText();
-                        //System.out.println("We hope you enjoyed your game!");
                         playing = false;
                     }
                 }
@@ -80,11 +98,19 @@ public class Main {
         }
     }
 
-    private static String inputScanner(){
+    private static String inputScanner() {
 
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
 
+    }
+
+    private static void delayGame() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.print("InterruptedException: " + e);
+        }
     }
 
 }

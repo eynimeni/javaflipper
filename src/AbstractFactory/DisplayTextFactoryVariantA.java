@@ -23,6 +23,10 @@ public class DisplayTextFactoryVariantA implements AbstractFactory<DisplayText> 
         else if("bye".equalsIgnoreCase(messageType)){
             return new GoodBye();
         }
+        else if("coindrop".equalsIgnoreCase(messageType)){
+            return new CoinDrop();
+        }
+
 
         System.out.print("Log: nothing matched!");
         return null;

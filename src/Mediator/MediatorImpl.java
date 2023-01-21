@@ -1,6 +1,8 @@
 package Mediator;
 
 import FlipperElements.*;
+import States.Flipper;
+import States.NoCredit;
 
 import java.util.List;
 import java.util.Random;
@@ -8,6 +10,7 @@ import java.util.SplittableRandom;
 
 public class MediatorImpl implements Mediator {
 
+    //@ToDo: fix or delete ....private MediatorImpl singletonMediator;
     private Bumper bumper0;
     private Bumper bumper1;
     private Target target0;
@@ -22,6 +25,18 @@ public class MediatorImpl implements Mediator {
 
     private List<FlipperElement> flipperElementList;
 
+    //@ToDo: fix or delete ... Private Constructor wg. Singleton
+    //private MediatorImpl(){};
+
+    //Public Methode für Singleton-Erzeugung
+    /*@ToDo: fix or delete ... public MediatorImpl getSingleMediatorInstance() {
+        if (singletonMediator == null) {
+            singletonMediator = new MediatorImpl();
+        }
+        return singletonMediator;
+    }*/
+
+    @Override
     public void setElements(List<FlipperElement> flipperElementList) {
         this.flipperElementList = flipperElementList;
 
@@ -36,7 +51,6 @@ public class MediatorImpl implements Mediator {
         this.slingshot0 = (Slingshot) flipperElementList.get(8);
         this.slingshot1 = (Slingshot) flipperElementList.get(9);
     }
-
 
     @Override
     public void directBall(FlipperElement flipperElement) {
