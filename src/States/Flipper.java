@@ -60,11 +60,12 @@ public class Flipper {
 
     public void addCredit() {
         this.credit++;
-        displayText = getDisplayTextFactory().createMessage("coindrop");
+        displayText = this.getDisplayTextFactory().createMessage("coindrop");
         displayText.createText();
         //System.out.println("Clink-plink-clink. This coin dropped smoothly!");
         System.out.println(">>> Your Credit is now: " + this.credit);
         state.insertCoin();
+
     }
 
     public void pressPlayButton() {
@@ -89,6 +90,7 @@ public class Flipper {
 
     public void displayCredit() {
         System.out.println(">>> Your Credit: " + this.credit);
+
     }
 
     public Integer getCredit() {
