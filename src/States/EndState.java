@@ -16,6 +16,12 @@ public class EndState implements State {
         DisplayText displayText = flipper.getDisplayTextFactory().createMessage("endstate");
         displayText.createText();
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            System.out.print("InterruptedException: " + e);
+        }
+
     }
 
     @Override

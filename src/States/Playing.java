@@ -56,7 +56,11 @@ public class Playing implements State {
 
             //Wenn 1 Spiel zu Ende ist, alle 3 Bälle gespielt worden sind, wird Gamescore zum Spieler gespeichert.
             flipper.getCurrentPlayer().getGame().setTotalScore(gameScore);
-            System.out.println("Final Game Score is >>> " + this.gameScore + " <<< (Last Game's Score: " + flipper.getCurrentPlayer().getGame().getLastGamesScore() + "/ Player's Total Score: " + flipper.getCurrentPlayer().getGame().getTotalScore()+ ")");
+            System.out.println("\n **************************************" +
+                    "**** Final Game Score is >>> " + this.gameScore + " <<< " +
+                    "**** (Last Game's Score: " + flipper.getCurrentPlayer().getGame().getLastGamesScore() + "/ Player's Total Score: " + flipper.getCurrentPlayer().getGame().getTotalScore()+ ")" +
+                    " **************************************\n");
+            delayGame();
             flipper.getCurrentPlayer().getGame().setLastGamesScore(gameScore);
 
             this.flipper.setState(new EndState(this.flipper));

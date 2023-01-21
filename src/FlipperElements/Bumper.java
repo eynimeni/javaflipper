@@ -73,7 +73,6 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
     @Override
     public void elementGotHit() {
         if(elementStatus) {
-            //Gegen Aufruf setter ersetzt -> this.elementHitCount += 1;
             this.setElementHitCount(1);
             this.setElementScoreValue(50);
             System.out.println("Baaam, Bumper +50 Points!");
@@ -101,7 +100,6 @@ public class Bumper implements FlipperElement, FlipperElementWithScore {
 
     public void turnOnSpecialBonusPoints() {
         if (specialBonusPoints = false) {
-            //Gegen Aufruf setter ersetzt -> this.specialBonusPoints = true;
             this.setSpecialBonusPoints(true);
             System.out.println("WOW - You will get Special Bonus Points for your Bumper Hitting Qualities!");
         }

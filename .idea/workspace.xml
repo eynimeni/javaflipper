@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Finished ReadyState &amp; EndState.">
-      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/GameScore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/GameScoreB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/PlayingText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/PlayingTextB.java" afterDir="false" />
+    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Finished Playing State.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +102,7 @@
       <workItem from="1673810332427" duration="6470000" />
       <workItem from="1673951894273" duration="2078000" />
       <workItem from="1674151910651" duration="7169000" />
-      <workItem from="1674287773273" duration="11800000" />
+      <workItem from="1674287773273" duration="12608000" />
     </task>
     <task id="LOCAL-00001" summary="basic state pattern implemented">
       <created>1672675809765</created>
@@ -177,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674298178616</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Finished Playing State.">
+      <created>1674299971695</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674299971695</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +210,7 @@
     <MESSAGE value="Finished Main, Flipper and MediatorImpl. But still something to do on Flipper/Mediator Singelton." />
     <MESSAGE value="Some minor adaptions. Finished NoCreditState." />
     <MESSAGE value="Finished ReadyState &amp; EndState." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished ReadyState &amp; EndState." />
+    <MESSAGE value="Finished Playing State." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Playing State." />
   </component>
 </project>

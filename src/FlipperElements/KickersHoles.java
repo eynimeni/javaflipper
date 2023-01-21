@@ -13,13 +13,6 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
     private int elementHitCount = 0;
     private Boolean elementStatus = true;
 
-    /*@ToDo: Delete Comment, when Mediator-Class is available;
-    public KickersHoles(Mediator mediator){
-        this.mediator = mediator;
-    }
-    */
-
-    //@ToDo: wenn Mediator vorhanden löschen!
     public KickersHoles(String id, Mediator mediator){
 
         this.id = id;
@@ -73,7 +66,6 @@ public class KickersHoles implements FlipperElement, FlipperElementWithScore {
     @Override
     public void elementGotHit() {
         if(elementStatus) {
-            //Gegen Aufruf setter ersetzt -> this.elementHitCount += 1;
             this.setElementHitCount(1);
             this.setElementScoreValue(20);
             System.out.println("Baaam, Kicker/Hole +20 Points!");
