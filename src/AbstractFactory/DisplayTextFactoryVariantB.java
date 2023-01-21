@@ -25,6 +25,12 @@ public class DisplayTextFactoryVariantB implements AbstractFactory<DisplayText> 
             return new ReadyToPlayB();
         } else if ("endstate".equalsIgnoreCase(messageType)) {
             return new EndStateB();
+        } else if ("playing".equalsIgnoreCase(messageType)) {
+            return new PlayingTextB();
+        } else if ("gamescore".equalsIgnoreCase(messageType)) {
+            return new GameScoreB();
+        }else if ("noballs".equalsIgnoreCase(messageType)) {
+            return new NoballsB();
         }
 
         System.out.print("Log: nothing matched!");

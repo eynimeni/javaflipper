@@ -25,6 +25,12 @@ public class DisplayTextFactoryVariantA implements AbstractFactory<DisplayText> 
             return new ReadyToPlay();
         } else if ("endstate".equalsIgnoreCase(messageType)) {
             return new EndState();
+        } else if ("playing".equalsIgnoreCase(messageType)) {
+            return new PlayingText();
+        } else if ("gamescore".equalsIgnoreCase(messageType)) {
+            return new GameScore();
+        }else if ("noballs".equalsIgnoreCase(messageType)) {
+            return new NoBalls();
         }
 
 
