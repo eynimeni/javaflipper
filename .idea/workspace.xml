@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Finished Main, Flipper and MediatorImpl. But still something to do on Flipper/Mediator Singelton.">
-      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/NoCredit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/NoCreditB.java" afterDir="false" />
+    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Some minor adaptions. Finished NoCreditState.">
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/EndState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/EndStateB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/ReadyToPlay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AbstractFactory/ReadyToPlayB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/DisplayTextFactoryVariantB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mediator/MediatorImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Flipper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/States/NoCredit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/NoCredit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/Ready.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Ready.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +106,7 @@
       <workItem from="1673810332427" duration="6470000" />
       <workItem from="1673951894273" duration="2078000" />
       <workItem from="1674151910651" duration="7169000" />
-      <workItem from="1674287773273" duration="9257000" />
+      <workItem from="1674287773273" duration="10336000" />
     </task>
     <task id="LOCAL-00001" summary="basic state pattern implemented">
       <created>1672675809765</created>
@@ -164,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674295210812</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Some minor adaptions. Finished NoCreditState.">
+      <created>1674297310305</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674297310305</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,6 +198,7 @@
     <MESSAGE value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
     <MESSAGE value="Just little improvements!" />
     <MESSAGE value="Finished Main, Flipper and MediatorImpl. But still something to do on Flipper/Mediator Singelton." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Main, Flipper and MediatorImpl. But still something to do on Flipper/Mediator Singelton." />
+    <MESSAGE value="Some minor adaptions. Finished NoCreditState." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some minor adaptions. Finished NoCreditState." />
   </component>
 </project>

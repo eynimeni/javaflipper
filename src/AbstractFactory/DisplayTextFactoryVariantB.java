@@ -21,6 +21,10 @@ public class DisplayTextFactoryVariantB implements AbstractFactory<DisplayText> 
             return new CoinDropB();
         } else if ("nocredit".equalsIgnoreCase(messageType)) {
             return new NoCreditB();
+        } else if ("readytoplay".equalsIgnoreCase(messageType)) {
+            return new ReadyToPlayB();
+        } else if ("endstate".equalsIgnoreCase(messageType)) {
+            return new EndStateB();
         }
 
         System.out.print("Log: nothing matched!");

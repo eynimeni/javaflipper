@@ -21,6 +21,10 @@ public class DisplayTextFactoryVariantA implements AbstractFactory<DisplayText> 
             return new CoinDrop();
         } else if ("nocredit".equalsIgnoreCase(messageType)) {
             return new NoCredit();
+        } else if ("readytoplay".equalsIgnoreCase(messageType)) {
+            return new ReadyToPlay();
+        } else if ("endstate".equalsIgnoreCase(messageType)) {
+            return new EndState();
         }
 
 
