@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Abstract Factory implemented! Works on Main().">
+    <list default="true" id="d6aaab0c-0252-4fb8-9018-f8ba3bed8fbb" name="Changes" comment="Finished Playing State.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AbstractFactory/ChooseOptionB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AbstractFactory/ChooseOptionB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/Bumper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlipperElements/KickersHoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/EndState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/EndState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/States/Playing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/States/Playing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +63,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -97,6 +102,7 @@
       <workItem from="1673810332427" duration="6470000" />
       <workItem from="1673951894273" duration="2078000" />
       <workItem from="1674151910651" duration="7169000" />
+      <workItem from="1674287773273" duration="12608000" />
     </task>
     <task id="LOCAL-00001" summary="basic state pattern implemented">
       <created>1672675809765</created>
@@ -140,7 +146,42 @@
       <option name="project" value="LOCAL" />
       <updated>1673986163202</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Just little improvements!">
+      <created>1674249973500</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1674249973500</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Finished Main, Flipper and MediatorImpl. But still something to do on Flipper/Mediator Singelton.">
+      <created>1674295210812</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674295210812</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Some minor adaptions. Finished NoCreditState.">
+      <created>1674297310305</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1674297310305</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Finished ReadyState &amp; EndState.">
+      <created>1674298178616</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1674298178616</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Finished Playing State.">
+      <created>1674299971695</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1674299971695</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,17 +206,11 @@
     <MESSAGE value="double check in case of &quot;end game&quot; added" />
     <MESSAGE value="Playing State Modifications and EndState" />
     <MESSAGE value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Base-Package. Implemented Player and Game class and integrated Player/Game creation in Main and Flipper class." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Just little improvements!" />
+    <MESSAGE value="Finished Main, Flipper and MediatorImpl. But still something to do on Flipper/Mediator Singelton." />
+    <MESSAGE value="Some minor adaptions. Finished NoCreditState." />
+    <MESSAGE value="Finished ReadyState &amp; EndState." />
+    <MESSAGE value="Finished Playing State." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Playing State." />
   </component>
 </project>

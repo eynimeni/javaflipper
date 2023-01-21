@@ -1,26 +1,27 @@
 package States;
 
-public class Ready implements State {
-    private final Flipper context;
+import AbstractFactory.DisplayText;
 
-    public Ready(Flipper context) {
-        System.out.println("You are now ready to play");
-        this.context = context;
+public class Ready implements State {
+    private final Flipper flipper;
+
+    public Ready(Flipper flipper) {
+
+        DisplayText displayText = flipper.getDisplayTextFactory().createMessage("readytoplay");
+        displayText.createText();
+        this.flipper = flipper;
     }
 
     @Override
     public void playButtonPressed() {
         System.out.println("States.Ready, steady ....");
-        context.decreaseCredit();
-        context.setState(new Playing(this.context));
-        ((Playing)context.getState()).shootBall();
-        //context.setState(new States.EndState(context));
+        flipper.decreaseCredit();
+        flipper.setState(new Playing(this.flipper));
+        ((Playing) flipper.getState()).shootBall();
     }
 
     @Override
     public void insertCoin() {
-
-        //@ToDo: Credit-Implementierung aufnehmen?
-        // -> das passiert im States.Flipper. Die Methode wird nur vererbt, falls man noch eine spezifische Action braucht
+        //@ToDo: Hier passiert nichts.
     }
 }

@@ -1,24 +1,11 @@
-package States;/*
-@ToDo: Arbeitskommentare:
-    Hab mich ja an diesen Inputs orientiert https://refactoring.guru/design-patterns/state. Ich denke, dass die Context-Klasse schon unsere Flipperklasse ist.
-    Wg. diesem Statement: "Instead of implementing all behaviors on its own, the original object, called context, stores a reference to one of the state objects that represents its current state, and delegates all the state-related work to that object."
-    Schlage daher vor, dass wir:
-    - States.Flipper-Klasse kommt dann auch aus dem Statespackage wieder raus. Steht mal auf selber Ebene wie die Main.
-        //->hier gibt es vielleicht ein Problem mit der Vererbung des Interfaces (zumindest schreit die IDE), drum hab ich es mal gelassen.
-        // Ok, sehen wir uns noch an.
-    ----
-    Erster Schritt? States.Flipper mal sehr rudimentär programmieren, so dass Status und Statuswechsel korrekt funktioneren?
-    Dann Spiellogik via Playing Klasse und Kompositum, Mediator etc?
- */
+package States;
 
-//TODO aufpassen, dass diese Klasse nicht zu überladen wird - evt. etwas kapseln in neuer Klasse
-
+import AbstractFactory.*;
+import AbstractFactory.DisplayText;
 import Base.Player;
 
 import FlipperElements.*;
-import Mediator.Mediator;
-import Mediator.MediatorImpl;
-
+import Mediator.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,40 +13,63 @@ import java.util.List;
 public class Flipper {
 
     private static Flipper singletonFlipper;
-    //@ToDo: Ist der Credit nicht auch vom Status abhängig? NoCredit -> Credit = 0, Ready/Playing/EndState -> Credit >= 1 und gehört als Attribut inkl. dazugehöriger Methoden in den State? Oder als globale Variable zum States.Flipper?
-    //-> dafür brauchen wir keine Variable, diese Logik ist im Endstate. Nach dem Spiel wird geschaut ob noch Credit da ist, dann entweder -> No Credit oder Ready State.
-
+    private AbstractFactory<DisplayText> factory = null;
+    private DisplayText displayText;
     private Integer credit = 0;
     private State state;
     private final List<FlipperElement> flipperElements;
-    Mediator mediator = new MediatorImpl();
+    private final Mediator mediator = new MediatorImpl();
     private final List<Player> players = new ArrayList<>();
     //Aktueller Spieler, muss bei Spielerwechsel geändert werden. Diese Funktion gibt es aber noch nicht @ToDo: implementieren?
     private Player currentPlayer;
 
-
+    //Private Constructor wg. Singleton
     private Flipper() {
-
         setState(new NoCredit(this));
 
         this.flipperElements = createFlipperElements();
+        //@ToDo: fix or delete! this.mediator = mediator.getSingleMediatorInstance();
         this.mediator.setElements(this.flipperElements);
     }
 
-    public static Flipper getSingleFlipperInstance(){
-        if (singletonFlipper == null){
+    //Public Methode für Singleton-Erzeugung
+    public static Flipper getSingleFlipperInstance() {
+        if (singletonFlipper == null) {
             singletonFlipper = new Flipper();
         }
         return singletonFlipper;
     }
 
+    public void createDisplayTextFactory(String factoryVariant){
+
+        if(factoryVariant.equalsIgnoreCase("A")){
+            this.factory = new DisplayTextFactoryVariantA();
+        }
+        else if(factoryVariant.equalsIgnoreCase("B")){
+            this.factory = new DisplayTextFactoryVariantB();
+        }
+    }
+
+    public AbstractFactory<DisplayText> getDisplayTextFactory(){
+        return this.factory;
+    }
+
     public void insertCoin() {
         addCredit();
-        //braucht es eig. nicht an dieser Stelle -> state.insertCoin();
+    }
+
+    public void addCredit() {
+        this.credit++;
+        displayText = this.getDisplayTextFactory().createMessage("coindrop");
+        displayText.createText();
+        //System.out.println("Clink-plink-clink. This coin dropped smoothly!");
+        System.out.println(">>> Your Credit is now: " + this.credit);
+        state.insertCoin();
+
     }
 
     public void pressPlayButton() {
-        System.out.println("Play Button Pressed");
+        System.out.println(">>> Play Button Pressed");
         state.playButtonPressed();
     }
 
@@ -71,15 +81,7 @@ public class Flipper {
         return state;
     }
 
-    public void addCredit() {
-        this.credit++;
-        System.out.println("Clink-plink-clink. This coin dropped smoothly!");
-        System.out.println("Your Credit is now: " + this.credit);
-        state.insertCoin();
-    }
-
-    //@ToDo: passiert bei jedem Spielstart, also Wechsel vom Ready in den Playing State, da ja pro Credit 1 Spiel mit 3 Kugeln, oder?
-    //-> ja genau, es passiert, wenn im ready state der play button gedrückt wird!
+    //Wird jedesmal aufgerufen, wenn im ReadyState der PlayButton gedrückt wird!
     public void decreaseCredit() {
         if (this.credit > 0) {
             this.credit--;
@@ -87,70 +89,76 @@ public class Flipper {
     }
 
     public void displayCredit() {
-        System.out.println("Your Credit: " + this.credit);
+        System.out.println(">>> Your Credit: " + this.credit);
+
     }
 
     public Integer getCredit() {
         return this.credit;
     }
 
-
     //Methode zum Erzeugen der FLipperElemente, die aus dem Constructor aufgerufen wird
-    private List<FlipperElement> createFlipperElements(){
+    private List<FlipperElement> createFlipperElements() {
 
         List<FlipperElement> tmpFlipperElements = new ArrayList<>();
-        System.out.println("Creating Flipper elements.");
+        System.out.println("\nCreating Flipper elements started ...");
 
-        for(int i = 0; i<2; i++){
-            Bumper bumper = new Bumper("bumper"+i, this.mediator);
+        for (int i = 0; i < 2; i++) {
+            Bumper bumper = new Bumper("bumper" + i, this.mediator);
             tmpFlipperElements.add(bumper);
         }
 
-        for(int i = 0; i<3; i++){
-            Target target = new Target("target"+i, this.mediator);
+        for (int i = 0; i < 3; i++) {
+            Target target = new Target("target" + i, this.mediator);
             tmpFlipperElements.add(target);
         }
 
-        for(int i = 0; i<2; i++){
-            KickersHoles kickersHoles = new KickersHoles("kicker"+i, this.mediator);
+        for (int i = 0; i < 2; i++) {
+            KickersHoles kickersHoles = new KickersHoles("kicker" + i, this.mediator);
             tmpFlipperElements.add(kickersHoles);
         }
 
-        for(int i = 0; i<1; i++){
-            Ramp ramp = new Ramp("ramp"+i, this.mediator);
+        for (int i = 0; i < 1; i++) {
+            Ramp ramp = new Ramp("ramp" + i, this.mediator);
             tmpFlipperElements.add(ramp);
         }
 
-        for(int i = 0; i<2; i++){
-            Slingshot slingshot = new Slingshot("slingshot"+i, this.mediator);
+        for (int i = 0; i < 2; i++) {
+            Slingshot slingshot = new Slingshot("slingshot" + i, this.mediator);
             tmpFlipperElements.add(slingshot);
         }
 
         tmpFlipperElements.add(createFlipperElementsComposition());
 
+        //Logoutput for FlipperElementcreation to be prooved.
+            /*for (FlipperElement flipperElement : tmpFlipperElements) {
+                System.out.println(" - FlipperElement ID: " + flipperElement.getId());
 
-        //Logoutpout for FlipperElementcreation to be prooved.
-        /*for (FlipperElement flipperElement : tmpFlipperElements) {
-            System.out.println(" - FlipperElement ID: " + flipperElement.getId());
+                if (flipperElement instanceof FlipperElementsComposition) {
 
-            if (flipperElement instanceof FlipperElementsComposition) {
-
-                for (FlipperElement compFlipperElement : ((FlipperElementsComposition) flipperElement).getFlipperElementsList()) {
-                    System.out.println("    - FlipperElementComposition: " + compFlipperElement.getId());
+                    for (FlipperElement compFlipperElement : ((FlipperElementsComposition) flipperElement).getFlipperElementsList()) {
+                        System.out.println("    - FlipperElementComposition: " + compFlipperElement.getId());
+                    }
                 }
-            }
+            }*/
 
-        }*/
+        System.out.println("... Building Flipper Elements completed!\n... FlipperElement-List contains \"" + tmpFlipperElements.size() + "\" elements.");
+        //Factory hier noch nicht verfügbar, wird erst danach erzeugt!
+        System.out.println(
+                """
+                 ____   __      ___         _                                 _  __ _            _     ___ _ _                    _    ____
+                 \\ \\ \\  \\ \\    / / |_  __ _| |_   __ _   _ __  __ _ __ _ _ _ (_)/ _(_)__ ___ _ _| |_  | __| (_)_ __ _ __  ___ _ _| |  / / /
+                  > > >  \\ \\/\\/ /| ' \\/ _` |  _| / _` | | '  \\/ _` / _` | ' \\| |  _| / _/ -_) ' \\  _| | _|| | | '_ \\ '_ \\/ -_) '_|_| < < <\s
+                 /_/_/    \\_/\\_/ |_||_\\__,_|\\__| \\__,_| |_|_|_\\__,_\\__, |_||_|_|_| |_\\__\\___|_||_\\__| |_| |_|_| .__/ .__/\\___|_| (_)  \\_\\_\\
+                                                                   |___/                                      |_|  |_|                    \s
+               """
+        );
 
-        System.out.println("Building Flipper Elements completed!\nFlipperElement-List contains \"" +tmpFlipperElements.size()+"\" elements." );
-        System.out.println("What a magnificent Flipper!\n");
-
-        return  tmpFlipperElements;
-
+        return tmpFlipperElements;
     }
 
     //Methode um eine Composition aus FlipperElementen zu erzeugen. Wird über createFlipperElements() aufgerufen
-    private FlipperElementsComposition createFlipperElementsComposition(){
+    private FlipperElementsComposition createFlipperElementsComposition() {
 
         FlipperElementsComposition flipperElementsComposition = new FlipperElementsComposition("composition1", this.mediator);
 
@@ -160,33 +168,38 @@ public class Flipper {
         Target target = new Target("compTarget", this.mediator);
         flipperElementsComposition.add(target);
 
-        for(int i = 0; i<2; i++){
-            Slingshot slingshot = new Slingshot("compSlingshot"+i, this.mediator);
+        for (int i = 0; i < 2; i++) {
+            Slingshot slingshot = new Slingshot("compSlingshot" + i, this.mediator);
             flipperElementsComposition.add(slingshot);
         }
         return flipperElementsComposition;
     }
 
+    //Methode, um die FLipperelemente des Flippers zu erhalten.
     public List<FlipperElement> getFlipperElementsList() {
-       return this.flipperElements;
+        return this.flipperElements;
     }
 
+    //Spieler erzeugen
+    public void addPlayer(String playerName) {
 
-    public void addPlayer(String playerName){
+        Player tmpPlayer = new Player(playerName);
 
-        Player tmpPlayer = createPlayer(playerName);
-        System.out.println("Log: Player " +tmpPlayer.getPlayerName()+ ", Total Score = " +tmpPlayer.getGame().getTotalScore()+ "/last Game's Score = " +tmpPlayer.getGame().getLastGamesScore());
+        //Logoutput for rechecking
+        //System.out.println("Log: Player " + tmpPlayer.getPlayerName() + ", Total Score = " + tmpPlayer.getGame().getTotalScore() + "/last Game's Score = " + tmpPlayer.getGame().getLastGamesScore());
 
         this.players.add(tmpPlayer);
         this.currentPlayer = tmpPlayer;
     }
 
-    private Player createPlayer(String playerName){
+    //Spieler erzeugen -> in addPlayer() integriert
+        /*private Player createPlayer(String playerName) {
 
-        Player player = new Player(playerName);
-        return player;
-    }
+            Player player = new Player(playerName);
+            return player;
+        }*/
 
+    //Liefert den aktuellen Spieler
     public Player getCurrentPlayer() {
         return currentPlayer;
     }

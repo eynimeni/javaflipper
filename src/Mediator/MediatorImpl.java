@@ -8,35 +8,41 @@ import java.util.SplittableRandom;
 
 public class MediatorImpl implements Mediator {
 
-    private Bumper bumper0;
-    private Bumper bumper1;
     private Target target0;
     private Target target1;
     private Target target2;
-    private KickersHoles kicker0;
-    private KickersHoles kicker1;
     private Ramp ramp0;
-    private Slingshot slingshot0;
-    private Slingshot slingshot1;
-    private FlipperElementsComposition composition1;
+    //@ToDo: delete -> private FlipperElementsComposition composition1;
 
     private List<FlipperElement> flipperElementList;
 
+    //@ToDo: fix or delete ... Private Constructor wg. Singleton
+    //private MediatorImpl(){};
+
+    //Public Methode für Singleton-Erzeugung
+    /*@ToDo: fix or delete ... public MediatorImpl getSingleMediatorInstance() {
+        if (singletonMediator == null) {
+            singletonMediator = new MediatorImpl();
+        }
+        return singletonMediator;
+    }*/
+
+    @Override
     public void setElements(List<FlipperElement> flipperElementList) {
         this.flipperElementList = flipperElementList;
 
-        this.bumper0 = (Bumper) flipperElementList.get(0);
-        this.bumper1 = (Bumper) flipperElementList.get(1);
+        //@ToDo: fix or delete ....private MediatorImpl singletonMediator;
+        //@ToDo: delete -> Bumper bumper0 = (Bumper) flipperElementList.get(0);
+        //@ToDo: delete -> Bumper bumper1 = (Bumper) flipperElementList.get(1);
         this.target0 = (Target) flipperElementList.get(2);
         this.target1 = (Target) flipperElementList.get(3);
         this.target2 = (Target) flipperElementList.get(4);
-        this.kicker0 = (KickersHoles) flipperElementList.get(5);
-        this.kicker1 = (KickersHoles) flipperElementList.get(6);
+        //@ToDo: delete -> KickersHoles kicker0 = (KickersHoles) flipperElementList.get(5);
+        //@ToDo: delete -> KickersHoles kicker1 = (KickersHoles) flipperElementList.get(6);
         this.ramp0 = (Ramp) flipperElementList.get(7);
-        this.slingshot0 = (Slingshot) flipperElementList.get(8);
-        this.slingshot1 = (Slingshot) flipperElementList.get(9);
+        //@ToDo: delete -> Slingshot slingshot0 = (Slingshot) flipperElementList.get(8);
+        //@ToDo: delete -> Slingshot slingshot1 = (Slingshot) flipperElementList.get(9);
     }
-
 
     @Override
     public void directBall(FlipperElement flipperElement) {
@@ -74,19 +80,19 @@ public class MediatorImpl implements Mediator {
             System.out.println(flipperElement.getId() + " put down after hit.");
 
             if (!this.target0.getElementStatus() && !this.target1.getElementStatus() && !this.target2.getElementStatus()) {
-                System.out.println("WOW, you've touched all targets! EXTRA BONUS!");
+                System.out.println(">>> WOW, you've touched all targets! EXTRA BONUS!");
                 ((Target) flipperElement).setAllTargetsTouched();
                 this.target0.setElementStatus(true);
                 this.target1.setElementStatus(true);
                 this.target2.setElementStatus(true);
-                System.out.println("Targets all up again!");
+                System.out.println(">>> Targets all up again!");
             }
             redirectBall(65);
         }
     }
 
     public void printFallingDownMessage() {
-        String fallingDownMessage = "Watch out! Ball falling down!";
+        String fallingDownMessage = ">>> Watch out! Ball falling down!";
         System.out.println(fallingDownMessage);
     }
 
