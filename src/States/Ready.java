@@ -21,7 +21,5 @@ public class Ready implements State {
     }
 
     @Override
-    public void insertCoin() {
-        //@ToDo: Hier passiert nichts.
-    }
+    public void insertCoin() {}
 }

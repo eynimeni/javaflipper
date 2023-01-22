@@ -12,36 +12,16 @@ public class MediatorImpl implements Mediator {
     private Target target1;
     private Target target2;
     private Ramp ramp0;
-    //@ToDo: delete -> private FlipperElementsComposition composition1;
 
     private List<FlipperElement> flipperElementList;
-
-    //@ToDo: fix or delete ... Private Constructor wg. Singleton
-    //private MediatorImpl(){};
-
-    //Public Methode für Singleton-Erzeugung
-    /*@ToDo: fix or delete ... public MediatorImpl getSingleMediatorInstance() {
-        if (singletonMediator == null) {
-            singletonMediator = new MediatorImpl();
-        }
-        return singletonMediator;
-    }*/
 
     @Override
     public void setElements(List<FlipperElement> flipperElementList) {
         this.flipperElementList = flipperElementList;
-
-        //@ToDo: fix or delete ....private MediatorImpl singletonMediator;
-        //@ToDo: delete -> Bumper bumper0 = (Bumper) flipperElementList.get(0);
-        //@ToDo: delete -> Bumper bumper1 = (Bumper) flipperElementList.get(1);
         this.target0 = (Target) flipperElementList.get(2);
         this.target1 = (Target) flipperElementList.get(3);
         this.target2 = (Target) flipperElementList.get(4);
-        //@ToDo: delete -> KickersHoles kicker0 = (KickersHoles) flipperElementList.get(5);
-        //@ToDo: delete -> KickersHoles kicker1 = (KickersHoles) flipperElementList.get(6);
         this.ramp0 = (Ramp) flipperElementList.get(7);
-        //@ToDo: delete -> Slingshot slingshot0 = (Slingshot) flipperElementList.get(8);
-        //@ToDo: delete -> Slingshot slingshot1 = (Slingshot) flipperElementList.get(9);
     }
 
     @Override

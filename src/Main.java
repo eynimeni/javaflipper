@@ -9,7 +9,6 @@ public class Main {
 
         boolean playing = true;
         String input = "";
-        //in Flipper verschoben -> AbstractFactory<DisplayText> factory = null;
         DisplayText displayText;
         Flipper flipper = Flipper.getSingleFlipperInstance();
 
@@ -40,14 +39,6 @@ public class Main {
             );
             input = inputScanner();
             flipper.createDisplayTextFactory(input);
-
-            //in Flipper verschoben ->
-            /*if(input.equalsIgnoreCase("A")){
-                factory = new DisplayTextFactoryVariantA();
-            }
-            else if(input.equalsIgnoreCase("B")){
-                factory = new DisplayTextFactoryVariantB();
-            }*/
         }
 
         displayText = flipper.getDisplayTextFactory().createMessage("welcome");
@@ -80,8 +71,6 @@ public class Main {
                     displayText.createText();
 
                     if (flipper.getCredit() > 0) {
-                        /*@ToDo: use or no use -> displayText = factory.createCreditLost();
-                        displayText.createText();*/
                         System.out.println("Your Credit of " + flipper.getCredit() + " will be lost.");
                     }
 

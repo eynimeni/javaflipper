@@ -60,7 +60,6 @@ public class FlipperElementsComposition implements FlipperElement, FlipperElemen
                 for (FlipperElement element : this.flipperElementsList
                 ) {
                     element.luckyStrike(this);
-                    //System.out.println("Lucky Strike hit " + element.getId());
                 }
                 System.out.println("+ " + getElementScore() + (" Points!!"));
             }
@@ -69,7 +68,6 @@ public class FlipperElementsComposition implements FlipperElement, FlipperElemen
                 for (int i = 0; i < 4; i++) {
                     FlipperElement element = this.flipperElementsList.get(new Random().nextInt(this.flipperElementsList.size()));
                     element.badAssStrike(this);
-                    //System.out.println("Bad Ass Strike hit " + element.getId());
                 }
                 System.out.println("+ " + getElementScore() + (" Points!!"));
             }
@@ -78,7 +76,6 @@ public class FlipperElementsComposition implements FlipperElement, FlipperElemen
                 for (FlipperElement element : this.flipperElementsList
                 ) {
                     element.strikeExtreme(this);
-                    //System.out.println("Strike Extreme hit " + element.getId());
                 }
                 System.out.println("+ " + getElementScore() + (" Points!!"));
             }

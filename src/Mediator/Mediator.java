@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface Mediator {
 
-    //@ToDo: fix or delete ... MediatorImpl getSingleMediatorInstance();
-
     void directBall(FlipperElement flipperElement);
 
     void setElements(List<FlipperElement> flipperElements);

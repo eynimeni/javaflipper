@@ -20,7 +20,6 @@ public class Flipper {
     private final List<FlipperElement> flipperElements;
     private final Mediator mediator = new MediatorImpl();
     private final List<Player> players = new ArrayList<>();
-    //Aktueller Spieler, muss bei Spielerwechsel geändert werden. Diese Funktion gibt es aber noch nicht @ToDo: implementieren?
     private Player currentPlayer;
 
     //Private Constructor wg. Singleton
@@ -191,13 +190,6 @@ public class Flipper {
         this.players.add(tmpPlayer);
         this.currentPlayer = tmpPlayer;
     }
-
-    //Spieler erzeugen -> in addPlayer() integriert
-        /*private Player createPlayer(String playerName) {
-
-            Player player = new Player(playerName);
-            return player;
-        }*/
 
     //Liefert den aktuellen Spieler
     public Player getCurrentPlayer() {
